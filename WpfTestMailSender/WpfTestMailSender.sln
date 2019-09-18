@@ -3,9 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestMailSender", "WpfTestMailSender\WpfTestMailSender.csproj", "{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender", "MailSender\MailSender.csproj", "{A3C6C5FC-7974-4E60-B6C7-24BF34B4F561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsTestMailSender", "WinFormsTestMailSender\WinFormsTestMailSender.csproj", "{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B68C0FA1-3186-4048-B664-1625CB162118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.ConsoleTest", "Tests\MailSender.ConsoleTest\MailSender.ConsoleTest.csproj", "{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestMailSender", "Tests\WpfTestMailSender\WpfTestMailSender.csproj", "{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.WinFormsTest", "Tests\WinFormsTestMailSender\MailSender.WinFormsTest.csproj", "{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.WpfTest", "Tests\MailSender.WpfTest\MailSender.WpfTest.csproj", "{80EFAF87-BCFA-4243-B7C4-F929A3066FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{D73154A5-09D4-43EA-AA85-3D6B16A05AE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +23,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3C6C5FC-7974-4E60-B6C7-24BF34B4F561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C6C5FC-7974-4E60-B6C7-24BF34B4F561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C6C5FC-7974-4E60-B6C7-24BF34B4F561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C6C5FC-7974-4E60-B6C7-24BF34B4F561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -21,9 +39,23 @@ Global
 		{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80EFAF87-BCFA-4243-B7C4-F929A3066FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80EFAF87-BCFA-4243-B7C4-F929A3066FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80EFAF87-BCFA-4243-B7C4-F929A3066FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80EFAF87-BCFA-4243-B7C4-F929A3066FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73154A5-09D4-43EA-AA85-3D6B16A05AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73154A5-09D4-43EA-AA85-3D6B16A05AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73154A5-09D4-43EA-AA85-3D6B16A05AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73154A5-09D4-43EA-AA85-3D6B16A05AE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E28443DB-0B0F-44F7-AB61-F2DF1891AEFB} = {B68C0FA1-3186-4048-B664-1625CB162118}
+		{9AA59582-91B4-4CA5-9CC5-7E084DF5B2F1} = {B68C0FA1-3186-4048-B664-1625CB162118}
+		{4471D5AD-F70F-401D-A386-E9F1EDE4ABD6} = {B68C0FA1-3186-4048-B664-1625CB162118}
+		{80EFAF87-BCFA-4243-B7C4-F929A3066FE9} = {B68C0FA1-3186-4048-B664-1625CB162118}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14EA02D0-479E-4505-BD11-84888F340445}
