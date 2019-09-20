@@ -24,10 +24,16 @@
             </TabControl>
         </StackPanel>
         <TabControl Grid.Column="1" Margin="0,0,0,0" TabStripPlacement="Left">
-            <TabItem Header="1" ToolTip="Списки рассылки">
+            <TabItem ToolTip="Списки рассылки" Padding="0">
+                <TabItem.Header>
+                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Mailing.bmp"/>
+                </TabItem.Header>
                 <Grid/>
             </TabItem>
-            <TabItem Header="2" ToolTip="Планировщик">
+            <TabItem ToolTip="Планировщик">
+                <TabItem.Header>
+                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Scheduler.bmp"/>
+                </TabItem.Header>
                 <Grid/>
             </TabItem>
             <TabItem ToolTip="Редактирование Письма">
@@ -60,8 +66,11 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="4" ToolTip="Статистика">
-                <TabControl TabStripPlacement="Left">
+            <TabItem ToolTip="Статистика">
+                <TabItem.Header>
+                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Statistics.bmp"/>
+                </TabItem.Header>
+                <TabControl TabStripPlacement="Bottom">
                     <TabItem Header="5"/>
                     <TabItem Header="6"/>
                     <TabItem Header="7"/>
