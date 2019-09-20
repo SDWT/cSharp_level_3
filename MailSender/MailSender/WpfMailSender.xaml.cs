@@ -71,24 +71,47 @@ namespace MailSender
             string title = txtBxEmailTitle.Text;    // Email title / Тема
             string body = txtBxEmailBody.Text; // Email body / Текст
 
-            var results = SendService.SmtpSendMessages(strSender, password,
-                Smtps.MailRu.SmptUrl, Smtps.MailRu.Port, title, body, listStrMails);
-            for (int i = 0; i < results.Count; i++)
+            try
             {
-                if (results[i])
-                {
-                    MessageBox.Show($"Message to {listStrMails[i]} sended.", 
-                        "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Ошибка письмо до {listStrMails[i]} не отправлено.",
-                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+                var results = SendService.SmtpSendMessages(strSender, password,
+                Smtps.MailRu.SmptUrl, Smtps.MailRu.Port, title, body, listStrMails);
 
-            SendEndWindow sew = new SendEndWindow();
-            sew.ShowDialog();
+
+                for (int i = 0; i < results.Count; i++)
+                {
+                    if (results[i])
+                    {
+                        MessageBox.Show($"Message to {listStrMails[i]} sended.", 
+                            "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        //MessageBox.Show($"Ошибка письмо до {listStrMails[i]} не отправлено.",
+                        //    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        var eW = new ErrorWindow("Error");
+                        eW.ShowDialog();
+                    }
+                }
+
+                SendEndWindow sew = new SendEndWindow();
+                sew.ShowDialog();
+            }
+            catch (ArgumentException ae)
+            {
+                string errMsg = string.Empty;
+                if (ae.ParamName == "from")
+                    errMsg = "Email адрес отправителя не указан.";
+                else
+                    throw;
+
+                var eW = new ErrorWindow(errMsg);
+                eW.ShowDialog();
+            }
+            catch (FormatException fe)
+            {
+                var eW = new ErrorWindow(fe.Message);
+                eW.ShowDialog();
+            }
         }
     }
 }

@@ -81,6 +81,7 @@ namespace MailSender
                         catch (Exception ex)
                         {
                             tries.Add(false);
+                            throw; // Временное отслеживание
                         }
                     } // smtp
                 } // mm
