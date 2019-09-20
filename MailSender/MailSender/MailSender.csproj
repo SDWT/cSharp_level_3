@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MailSenderServiceClass.cs" />
     <Compile Include="Model\Smtp.cs" />
     <Compile Include="Model\Smtps.cs" />
     <Compile Include="SendEndWindow.xaml.cs">
