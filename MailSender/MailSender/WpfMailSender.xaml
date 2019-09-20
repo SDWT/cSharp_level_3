@@ -16,12 +16,6 @@
             <TextBox x:Name="tbxSender" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Отправитель"/>
             <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" ToolTip="Пароль"/>
             <Button x:Name="btnSendEmail" Content="Отправить email" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="BtnSendEmail_Click"/>
-            <TabControl TabStripPlacement="Left">
-                <TabItem Header="5"/>
-                <TabItem Header="6"/>
-                <TabItem Header="7"/>
-                <TabItem Header="8"/>
-            </TabControl>
         </StackPanel>
         <TabControl Grid.Column="1" Margin="0,0,0,0" TabStripPlacement="Left">
             <TabItem ToolTip="Списки рассылки" Padding="0">
@@ -39,13 +33,6 @@
             <TabItem ToolTip="Редактирование Письма">
                 <TabItem.Header>
                     <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Edit.png" Width="64"/>
-                    <!--<StackPanel>
-                        -->
-                    <!--<Ellipse Height="20" Width="20" Fill="White" />-->
-                    <!--
-                        <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="Resources/Edit.bmp"/>
-                        <Label>3</Label>
-                    </StackPanel>-->
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Background="#FFE5E5E5">

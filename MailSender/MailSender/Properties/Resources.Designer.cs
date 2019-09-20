@@ -22,7 +22,7 @@ namespace MailSender.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MailSender.Properties {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MailSender.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MailSender.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MailSender.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Doc {
+        public static System.Drawing.Bitmap Doc {
             get {
                 object obj = ResourceManager.GetObject("Doc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,17 @@ namespace MailSender.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Edit {
+        public static System.Drawing.Bitmap Docs {
+            get {
+                object obj = ResourceManager.GetObject("Docs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Edit {
             get {
                 object obj = ResourceManager.GetObject("Edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +93,7 @@ namespace MailSender.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mailing {
+        public static System.Drawing.Bitmap Mailing {
             get {
                 object obj = ResourceManager.GetObject("Mailing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +103,7 @@ namespace MailSender.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Scheduler {
+        public static System.Drawing.Bitmap Scheduler {
             get {
                 object obj = ResourceManager.GetObject("Scheduler", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -101,9 +111,18 @@ namespace MailSender.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Email адрес отправителя не указан..
+        /// </summary>
+        public static string SenderEmailEmpty {
+            get {
+                return ResourceManager.GetString("SenderEmailEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Statistics {
+        public static System.Drawing.Bitmap Statistics {
             get {
                 object obj = ResourceManager.GetObject("Statistics", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
