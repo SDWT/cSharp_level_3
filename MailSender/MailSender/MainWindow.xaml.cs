@@ -29,8 +29,8 @@ namespace MailSender
             {
                 using (var mm = new MailMessage(strSender, mail))
                 {
-                    mm.Subject = "Hello from C#";    // Email title / Тема
-                    mm.Body = "Hello world! hahaha"; // Email body / Текст
+                    mm.Subject = txtBxEmailTitle.Text;    // Email title / Тема
+                    mm.Body = txtBxEmailBody.Text; // Email body / Текст
                     mm.IsBodyHtml = false;           // false - body hasnt html
 
                     using (var sc = new SmtpClient("smtp.mail.ru", 25))
