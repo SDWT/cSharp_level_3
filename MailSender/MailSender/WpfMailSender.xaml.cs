@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Security;
 
+using MailSender.Model;
+
 namespace MailSender
 {
     /// <summary>
@@ -33,7 +35,7 @@ namespace MailSender
                     mm.Body = txtBxEmailBody.Text; // Email body / Текст
                     mm.IsBodyHtml = false;           // false - body hasnt html
 
-                    using (var sc = new SmtpClient("smtp.mail.ru", 25))
+                    using (var sc = new SmtpClient(Smtps.MailRu.SmptUrl, Smtps.MailRu.Port))
                     {
                         sc.EnableSsl = true;
                         sc.Credentials = new NetworkCredential(strSender, password);
