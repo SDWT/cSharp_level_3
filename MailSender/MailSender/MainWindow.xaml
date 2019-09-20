@@ -26,19 +26,19 @@
         <TabControl Grid.Column="1" Margin="0,0,0,0" TabStripPlacement="Left">
             <TabItem ToolTip="Списки рассылки" Padding="0">
                 <TabItem.Header>
-                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Mailing.bmp"/>
+                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Mailing.png" Width="64"/>
                 </TabItem.Header>
                 <Grid/>
             </TabItem>
             <TabItem ToolTip="Планировщик">
                 <TabItem.Header>
-                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Scheduler.bmp"/>
+                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Scheduler.png" Width="64"/>
                 </TabItem.Header>
                 <Grid/>
             </TabItem>
             <TabItem ToolTip="Редактирование Письма">
                 <TabItem.Header>
-                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="Resources/Edit.bmp"/>
+                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Edit.png" Width="64"/>
                     <!--<StackPanel>
                         -->
                     <!--<Ellipse Height="20" Width="20" Fill="White" />-->
@@ -59,16 +59,15 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Заголовок:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10, 5"/>
-                        <TextBox x:Name="txtBxEmailTitle" Grid.Row="0" Grid.Column="1" Width="Auto"/>
+                        <TextBox x:Name="txtBxEmailTitle" Grid.Row="0" Grid.Column="1" Width="Auto" Margin="10, 5"/>
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Текст письма:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10, 5"/>
-                        <TextBox x:Name="txtBxEmailBody" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"/>
-
+                        <TextBox x:Name="txtBxEmailBody" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" Margin="10, 5"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem ToolTip="Статистика">
                 <TabItem.Header>
-                    <Image Stretch="None" RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Statistics.bmp"/>
+                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Statistics.png" Width="64"/>
                 </TabItem.Header>
                 <TabControl TabStripPlacement="Bottom">
                     <TabItem Header="5"/>
