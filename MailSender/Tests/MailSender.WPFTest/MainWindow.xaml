@@ -1,0 +1,112 @@
+﻿<Window x:Class="MailSender.WPFTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender.WPFTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Create"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Save"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Service"/>
+            <MenuItem Header="Help"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock>Ready</TextBlock>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Панели">
+                <TabControl TabStripPlacement="Bottom">
+                    <TabItem Header="Grid">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="7*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="7*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="2" Grid.Column="1" Background="Red"></TextBox>
+                            <Ellipse Fill="Blue" Stroke="Red" StrokeThickness="2" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                            <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="87,35,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="StackPanel">
+                        <StackPanel Orientation="Vertical">
+                            <Button HorizontalAlignment="Center" Padding="30,10" Margin="0, 10">Кнопка 1</Button>
+                            <Button HorizontalAlignment="Left">Кнопка 2</Button>
+                            <Button HorizontalAlignment="Right">Кнопка 3</Button>
+                            <TextBox>ввод</TextBox>
+                            <Calendar></Calendar>
+                            <Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image></Image>
+                                    <TextBlock VerticalAlignment="Center">text</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="DockPanel">
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right">button 1</Button>
+                            <Button DockPanel.Dock="Bottom">button 2</Button>
+                            <Button DockPanel.Dock="Top">button 3</Button>
+                            <Button>button 4</Button>
+                            <Rectangle Fill="DarkGreen" Stroke="Red" StrokeThickness="2" RadiusX="50" RadiusY="100"></Rectangle>
+                        </DockPanel>
+                    </TabItem>
+                    <TabItem Header="Canvas">
+                        <Canvas>
+                            <Button Padding="50, 20" Canvas.Top="20" Canvas.Left="20">Button</Button>
+                            <Label Canvas.Right="20" Canvas.Bottom="10">Метка</Label>
+                        </Canvas>
+                    </TabItem>
+                    <TabItem Header="WparPanel">
+                        <WrapPanel>
+                            <Button Content="Button1" Padding="50, 20"></Button>
+                            <Button Content="Button2" Padding="50, 20"></Button>
+                            <Label>Метка</Label>
+                            <Button Content="Button3" Padding="50, 20"></Button>
+                            <Button Content="Button4" Padding="50, 20"></Button>
+                            <Button Content="Button5" Padding="50, 20"></Button>
+                            <Label>Метка</Label>
+                            <Button Content="Button6" Padding="50, 20"></Button>
+                            <Button Content="Button7" Padding="50, 20"></Button>
+                            <Label>Метка</Label>
+                            <Button Content="Button8" Padding="50, 20"></Button>
+                        </WrapPanel>
+                    </TabItem>
+                    <TabItem Header="UniformGrid">
+                        <UniformGrid Columns="2" VerticalAlignment="Top">
+                            <TextBlock Text="Фамилия"/>
+                            <TextBox>Поле ввода</TextBox>
+                            <TextBlock Text="Имя"/>
+                            <TextBox>Поле ввода</TextBox>
+                            <TextBlock Text="Отечество"/>
+                            <TextBox>Поле ввода</TextBox>
+                            <TextBlock Text="Группа"/>
+                            <TextBox>Поле ввода</TextBox>
+
+
+                        </UniformGrid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Списки рассылки"></TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Письма"></TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="MailSender.ErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender"
+        mc:Ignorable="d"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Title="SendEndWindow" Height="175" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" BorderThickness="1">
+    <Grid x:Name="grid">
+        <TextBlock x:Name="txtBlError"
+               Text="Ошибка"
+               FontSize="36"
+               Foreground="#FFC30000"
+               TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Right" Margin="0,0,50,20" VerticalAlignment="Bottom" Width="75" FontSize="16" Click="BtnOK_Click"/>
+    </Grid>
+</Window>
