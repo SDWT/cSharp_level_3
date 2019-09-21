@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        
         xmlns:local="clr-namespace:MailSender.WPFTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -19,7 +21,12 @@
             <MenuItem Header="Help"/>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <TextBlock>Ready</TextBlock>
+            <StatusBarItem>
+                <TextBlock>Ready</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem DockPanel.Dock="Right">
+                <ProgressBar Value="30" Width="60" Height="15"/>
+            </StatusBarItem>
         </StatusBar>
         <TabControl>
             <TabItem Header="Панели">
@@ -104,8 +111,142 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Списки рассылки"></TabItem>
-            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Списки рассылки">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ToolBarTray Grid.Row="0">
+                        <ToolBar>
+                            <Label MinWidth="85">Отправители</Label>
+                            <!--<Separator/>-->
+                            <ComboBox MinWidth="75" MaxWidth="150">
+                                <!--ItemsSource="{x:Static data:TestData:Senders}"-->
+                                <!--<ComboBoxItem>Отправитель 1</ComboBoxItem>
+                                <ComboBoxItem>Отправитель 2</ComboBoxItem>
+                                <ComboBoxItem>Отправитель 3</ComboBoxItem>
+                                <ComboBoxItem>Отправитель 4</ComboBoxItem>-->
+                            </ComboBox>
+                            <Button ToolTip="Create">
+                                <Image></Image>
+                            </Button>
+                            <Button ToolTip="Edit"/>
+                            <Button ToolTip="Delete"/>
+                            
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <Label MinWidth="85">Сервера</Label>
+                            <ComboBox MinWidth="75" MaxWidth="150">
+                                <ComboBoxItem>Сервер 1</ComboBoxItem>
+                                <ComboBoxItem>Сервер 2</ComboBoxItem>
+                                <ComboBoxItem>Сервер 3</ComboBoxItem>
+                                <ComboBoxItem>Сервер 4</ComboBoxItem>
+                            </ComboBox>
+                            <Label MinWidth="85">Получатели</Label>
+                            <Button ToolTip="Create">
+                                <fa:ImageAwesome Height="18" Icon="plus" Foreground="DarkBlue"/>
+                            </Button>
+                            <Button ToolTip="Edit">
+                                <fa:ImageAwesome Height="18" Icon="Edit" Foreground="Brown"/>
+                            </Button>
+                            <Button ToolTip="Delete">
+                                <fa:ImageAwesome Height="18" Icon="Trash" Foreground="Red"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="0">
+                            <Label MinWidth="85">Перейти в планировщик</Label>
+                            <ComboBox MinWidth="75" MaxWidth="150">
+                                <ComboBoxItem>Сервер 1</ComboBoxItem>
+                                <ComboBoxItem>Сервер 2</ComboBoxItem>
+                                <ComboBoxItem>Сервер 3</ComboBoxItem>
+                                <ComboBoxItem>Сервер 4</ComboBoxItem>
+                            </ComboBox>
+                            <Button ToolTip="Delete">
+                                <fa:ImageAwesome Height="18" Icon="ClockOutline" Foreground="DarkBlue"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <Label MinWidth="85">Получатели</Label>
+                            <Button ToolTip="Create">
+                                <fa:ImageAwesome Height="18" Icon="plus" Foreground="DarkBlue"/>
+                            </Button>
+                            <Button ToolTip="Edit">
+                                <fa:ImageAwesome Height="18" Icon="Edit" Foreground="Brown"/>
+                            </Button>
+                            <Button ToolTip="Delete">
+                                <fa:ImageAwesome Height="18" Icon="Trash" Foreground="Red"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Name"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Adress" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Планировщик">
+                <DockPanel>
+                    <GroupBox Header="Управление">
+                        <StackPanel>
+                            <TextBlock Text="Calendar"/>
+                            <Calendar/>
+                            <!--<DatePicker/>-->
+                            <StackPanel>
+                                <Button>
+                                    <DockPanel Margin="20, 0">
+                                        <fa:ImageAwesome Height="18" Icon="ClockOutline" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Запланировать"/>
+                                    </DockPanel>
+                                </Button>
+                                <Button>
+                                    <DockPanel Margin="20, 0">
+                                        <fa:ImageAwesome Height="18" Icon="ClockOutline" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Отправить"/>
+                                    </DockPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Задания">
+                        <ListBox>
+                            <ListBoxItem>
+                                <GroupBox Header="Задание 1">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <GroupBox Header="Задание 2">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <GroupBox Header="Задание 3">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                        </ListBox>
+                    </GroupBox>
+                </DockPanel>
+            </TabItem>
             <TabItem Header="Письма"></TabItem>
         </TabControl>
     </DockPanel>
