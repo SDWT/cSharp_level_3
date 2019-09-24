@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:local="clr-namespace:MailSender.WPFTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -43,7 +44,8 @@
                                       ItemsSource="{x:Static data:TestData.Senders}"
                                       DisplayMemberPath="Name"
                                       SelectedValuePath="Address"
-                                      SelectedItem="0"/>
+                                      SelectedIndex="1">
+                            </ComboBox>
                             <Button ToolTip="Create">
                                 <Image></Image>
                             </Button>
@@ -53,11 +55,18 @@
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Сервера</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150">
-                                <ComboBoxItem>Сервер 1</ComboBoxItem>
-                                <ComboBoxItem>Сервер 2</ComboBoxItem>
-                                <ComboBoxItem>Сервер 3</ComboBoxItem>
-                                <ComboBoxItem>Сервер 4</ComboBoxItem>
+                            <ComboBox MinWidth="75" MaxWidth="150"
+                                      ItemsSource="{x:Static data:TestData.Servers}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="x:Type entities:Server">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=Port:{0}}"/>
+                                            <!--<TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>-->
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                
                             </ComboBox>
                             <Label MinWidth="85">Получатели</Label>
                             <Button ToolTip="Create">
