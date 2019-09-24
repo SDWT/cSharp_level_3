@@ -47,11 +47,15 @@
                                       SelectedIndex="1">
                             </ComboBox>
                             <Button ToolTip="Create">
-                                <Image></Image>
+                                <fa:ImageAwesome Height="18" Icon="Plus"/>
+                                <!--<Image></Image>-->
                             </Button>
-                            <Button ToolTip="Edit"/>
-                            <Button ToolTip="Delete"/>
-                            
+                            <Button ToolTip="Edit">
+                                <fa:ImageAwesome Height="18" Icon="Edit"/>
+                            </Button>
+                            <Button ToolTip="Delete">
+                                <fa:ImageAwesome Height="18" Icon="TrashOutline"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Сервера</Label>
@@ -106,9 +110,9 @@
                     </ToolBarTray>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Name"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Adress" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ID"/>
+                            <DataGridTextColumn Header="Name"/>
+                            <DataGridTextColumn Header="Adress" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
