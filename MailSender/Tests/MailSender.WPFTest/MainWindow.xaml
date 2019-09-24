@@ -8,6 +8,7 @@
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:local="clr-namespace:MailSender.WPFTest"
+        xmlns:ctrl="clr-namespace:MailSender.WPFTest.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -26,11 +27,16 @@
             <StatusBarItem>
                 <TextBlock>Ready</TextBlock>
             </StatusBarItem>
+            <StatusBarItem>
+                <ctrl:TabItemsSwither Width="120"
+                                      Count="{Binding ElementName=MainTabControl, Path=Items.Count}"
+                                      Position="{Binding ElementName=MainTabControl, Path=SelectedIndex}"/>
+            </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right">
                 <ProgressBar Value="30" Width="60" Height="15"/>
             </StatusBarItem>
         </StatusBar>
-        <TabControl>
+        <TabControl x:Name="MainTabControl" SelectedIndex="0">
             <TabItem Header="Списки рассылки">
                 <Grid>
                     <Grid.Resources>
@@ -114,7 +120,8 @@
                     </ToolBarTray>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False"
                               IsReadOnly="True"
-                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}">
+                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
+                              GridLinesVisibility="Vertical" AlternatingRowBackground="LightGray">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>

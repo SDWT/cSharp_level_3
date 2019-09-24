@@ -24,5 +24,16 @@ namespace MailSender.WPFTest
         {
             InitializeComponent();
         }
+
+        private void TabItemsSwither_LeftButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabItemsSwither_RightButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
