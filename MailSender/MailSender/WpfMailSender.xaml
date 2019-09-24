@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
@@ -130,7 +132,10 @@
                     <GroupBox Grid.Column="0" Header="Управление">
                         <StackPanel>
                             <TextBlock Text="Calendar"/>
-                            <Calendar/>
+                            <Calendar Foreground="White" 
+                                      BorderBrush="{DynamicResource WindowBackgroundBrush}"
+                                      />
+                            <xctk:TimePicker/>
                             <StackPanel Margin="5">
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="20, 0">
