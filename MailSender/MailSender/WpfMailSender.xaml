@@ -50,7 +50,7 @@
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="20, 0">
                                         <fa:ImageAwesome Height="18" Icon="SendOutline" Foreground="White" DockPanel.Dock="Right"/>
-                                        <TextBlock Text="Отправить" Margin="0,0,5,0"/>
+                                        <TextBlock Text="Отправить сейчас" Margin="0,0,5,0"/>
                                     </DockPanel>
                                 </Button>
                             </StackPanel>
