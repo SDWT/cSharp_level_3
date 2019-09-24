@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:local="clr-namespace:MailSender.WPFTest"
         mc:Ignorable="d"
@@ -32,6 +33,9 @@
         <TabControl>
             <TabItem Header="Списки рассылки">
                 <Grid>
+                    <Grid.Resources>
+                        <db:MailSenderDBDataContext x:Key="DataBase"/>
+                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
@@ -108,11 +112,13 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"/>
-                            <DataGridTextColumn Header="Name"/>
-                            <DataGridTextColumn Header="Adress" Width="*"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Address" Width="*" Binding="{Binding Address}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
