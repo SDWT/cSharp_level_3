@@ -34,6 +34,7 @@ namespace MailSender
             // Email
             string title = txtBxEmailTitle.Text; // Email title / Тема
             string body = txtBxEmailBody.Text;   // Email body / Текст
+            //string body = rchTxtBxEmailBody.Document;   // Email body / Текст
 
             try
             {
