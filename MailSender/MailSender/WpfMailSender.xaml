@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Background="{DynamicResource WindowBackgroundBrush}"
@@ -28,7 +31,67 @@
                 <TabItem.Header>
                     <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Scheduler.png" Width="64"/>
                 </TabItem.Header>
-                <Grid/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Header="Управление">
+                        <StackPanel>
+                            <TextBlock Text="Calendar"/>
+                            <Calendar/>
+                            <StackPanel Margin="5">
+                                <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="20, 0">
+                                        <fa:ImageAwesome Height="18" Icon="ClockOutline" Foreground="White" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Запланировать" Margin="0,0,5,0"/>
+                                    </DockPanel>
+                                </Button>
+                                <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="20, 0">
+                                        <fa:ImageAwesome Height="18" Icon="SendOutline" Foreground="White" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Отправить" Margin="0,0,5,0"/>
+                                    </DockPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Задания">
+                        <ListBox>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 1">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 2">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 3">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"></TextBlock>
+                                        <TextBlock Text="Сервер"></TextBlock>
+                                        <TextBlock Text="Отправитель"></TextBlock>
+                                        <TextBlock Text="Получатели"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                        </ListBox>
+                        
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem ToolTip="Редактирование Письма">
                 <TabItem.Header>
@@ -48,7 +111,13 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Заголовок:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10, 5"/>
                         <TextBox x:Name="txtBxEmailTitle" Grid.Row="0" Grid.Column="1" Width="Auto" Margin="10, 5"/>
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Текст письма:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10, 5"/>
-                        <TextBox x:Name="txtBxEmailBody" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" Margin="10, 5"/>
+                        <TextBox x:Name="txtBxEmailBody"
+                                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                                 Width="Auto" VerticalScrollBarVisibility="Auto" 
+                                 AcceptsReturn="True" AcceptsTab="True"
+                                 Margin="10, 5"
+                                 TextWrapping="Wrap"/>
+                        <!--x:Name="rchTxtBxEmailBody"-->
                     </Grid>
                 </TabItem.Content>
             </TabItem>
