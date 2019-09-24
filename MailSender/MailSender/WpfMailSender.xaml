@@ -24,7 +24,7 @@
         <TabControl Grid.Column="1" Margin="0,0,0,0" TabStripPlacement="Left">
             <TabItem ToolTip="Списки рассылки" Padding="0">
                 <TabItem.Header>
-                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Mailing.png" Width="64"/>
+                    <Image Source="{StaticResource MailingDrawingImage}" Width="64"/>
                 </TabItem.Header>
                 <Grid>
                     <Grid.Resources>
@@ -120,7 +120,7 @@
             </TabItem>
             <TabItem ToolTip="Планировщик">
                 <TabItem.Header>
-                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Scheduler.png" Width="64"/>
+                    <Image Source="{StaticResource SchedulerDrawingImage}" Width="64"/>
                 </TabItem.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -186,7 +186,7 @@
             </TabItem>
             <TabItem ToolTip="Редактирование Письма">
                 <TabItem.Header>
-                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Edit.png" Width="64"/>
+                    <Image Source="{StaticResource EditDrawingImage}" Width="64"/>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Background="#FFE5E5E5">
@@ -218,7 +218,7 @@
             </TabItem>
             <TabItem ToolTip="Статистика">
                 <TabItem.Header>
-                    <Image RenderTransformOrigin="0.5,0.5" Source="pack://siteoforigin:,,,/Resources/Statistics.png" Width="64"/>
+                    <Image Source="{StaticResource StatisticsDrawingImage}" Width="64"/>
                 </TabItem.Header>
                 <TabControl TabStripPlacement="Bottom">
                     <TabItem Header="5"/>
