@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,12 +43,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
-    <Compile Include="Entities\Data\TestServers.cs" />
+    <Compile Include="Data\Linq2SQL\MailSenderDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailSenderDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TestServers.cs" />
     <Compile Include="Entities\Sender.cs" />
     <Compile Include="Entities\Server.cs" />
     <Compile Include="MailSenderService.cs" />
     <Compile Include="MailSheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Linq2SQL\MailSenderDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MailSenderDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\Linq2SQL\MailSenderDB.dbml.layout">
+      <DependentUpon>MailSenderDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
