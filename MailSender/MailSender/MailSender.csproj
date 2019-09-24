@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\TabItemsSwither.xaml.cs">
+      <DependentUpon>TabItemsSwither.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MailSenderServiceClass.cs" />
     <Compile Include="Model\Smtp.cs" />
     <Compile Include="Model\Smtps.cs" />
@@ -68,6 +71,10 @@
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\TabItemsSwither.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ErrorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,6 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Docs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
+      <Project>{3b5fdde5-72e5-42ae-ab13-1d4034e943ec}</Project>
+      <Name>MailSender.lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
