@@ -35,5 +35,9 @@ namespace MailSender.WPFTest
 
         }
 
+        private void GoToPlanningButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 1;
+        }
     }
 }

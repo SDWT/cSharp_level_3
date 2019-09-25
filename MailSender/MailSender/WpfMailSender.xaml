@@ -12,7 +12,7 @@
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Background="{DynamicResource WindowBackgroundBrush}"
-        Title="WpfMailSender" Height="450" Width="800">
+        Title="WpfMailSender" Height="450" Width="950">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
@@ -60,8 +60,10 @@
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Сервера</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150"
-                                      ItemsSource="{x:Static data:TestData.Servers}">
+                            <ComboBox x:Name="cbSmtpServer"
+                                MinWidth="75" MaxWidth="150"
+                                ItemsSource="{x:Static data:TestData.Servers}"
+                                SelectedValuePath="FullAddress">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="x:Type entities:Server">
                                         <StackPanel Orientation="Horizontal">
@@ -73,7 +75,6 @@
                                 </ComboBox.ItemTemplate>
 
                             </ComboBox>
-                            <Label MinWidth="85">Получатели</Label>
                             <Button ToolTip="Create">
                                 <fa:ImageAwesome Height="18" Icon="plus" Foreground="DarkBlue"/>
                             </Button>
@@ -92,7 +93,7 @@
                                 <ComboBoxItem>Сервер 3</ComboBoxItem>
                                 <ComboBoxItem>Сервер 4</ComboBoxItem>
                             </ComboBox>
-                            <Button ToolTip="Delete">
+                            <Button ToolTip="Перейти в планировщик" Click="GoToPlanningButton_Click">
                                 <fa:ImageAwesome Height="18" Icon="ClockOutline" Foreground="DarkBlue"/>
                             </Button>
                         </ToolBar>

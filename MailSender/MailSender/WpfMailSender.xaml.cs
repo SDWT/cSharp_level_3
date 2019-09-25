@@ -8,6 +8,8 @@ using System.IO;
 
 using MailSender.Model;
 using System.Windows.Documents;
+using System.Linq;
+using System.Text;
 
 namespace MailSender
 {
@@ -71,6 +73,26 @@ namespace MailSender
 
             #endregion
 
+            string FullAddress = cbSmtpServer.SelectedValue.ToString();
+            var arr = FullAddress.Split(':');
+
+            StringBuilder strB = new StringBuilder();
+
+            foreach (var str in arr)
+            {
+                strB.Append(str);
+            }
+            string smtpUrl = strB.ToString(0, strB.Length - arr.Last().Length);
+            int smtpPort;
+
+            if (!(int.TryParse(arr.Last(), out smtpPort)))
+            {
+                var eW = new ErrorWindow(string.Format(
+                            "Порт smpt сервера {0} указан неверно.", smtpUrl));
+                return;
+            }
+            
+
             // Времменно отключена отправка для тестирования
             return;
 
@@ -110,6 +132,11 @@ namespace MailSender
                 var eW = new ErrorWindow(fe.Message);
                 eW.ShowDialog();
             }
+        }
+
+        private void GoToPlanningButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 1;
         }
     }
 }

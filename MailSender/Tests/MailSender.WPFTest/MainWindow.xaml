@@ -97,13 +97,7 @@
                         </ToolBar>
                         <ToolBar Band="0">
                             <Label MinWidth="85">Перейти в планировщик</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150">
-                                <ComboBoxItem>Сервер 1</ComboBoxItem>
-                                <ComboBoxItem>Сервер 2</ComboBoxItem>
-                                <ComboBoxItem>Сервер 3</ComboBoxItem>
-                                <ComboBoxItem>Сервер 4</ComboBoxItem>
-                            </ComboBox>
-                            <Button ToolTip="Delete">
+                            <Button ToolTip="Go to planing" Click="GoToPlanningButton_Click">
                                 <fa:ImageAwesome Height="18" Icon="ClockOutline" Foreground="DarkBlue"/>
                             </Button>
                         </ToolBar>
