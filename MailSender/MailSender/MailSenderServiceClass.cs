@@ -78,7 +78,7 @@ namespace MailSender
                             sc.Send(mm);
                             tries.Add(true);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             tries.Add(false);
                             throw; // Временное отслеживание

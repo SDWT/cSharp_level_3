@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MailSender.WPFTest.Controls.ToolBarSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:MailSender.WPFTest.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="270">
+    <ToolBar ButtonBase.Click="ToolBar_Click">
+        <Label MinWidth="85">Отправители</Label>
+        <!--<Separator/>-->
+        <ComboBox Name="tlBrCmbBx"
+                  MinWidth="75" 
+                  MaxWidth="150" 
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Address"
+                  SelectedIndex="1">
+        </ComboBox>
+        <Button Name="tlBrCreateButton" ToolTip="Create">
+            <fa:ImageAwesome Height="18" Icon="Plus"/>
+            <!--<Image></Image>-->
+        </Button>
+        <Button Name="tlBrEditButton" ToolTip="Edit">
+            <fa:ImageAwesome Height="18" Icon="Edit"/>
+        </Button>
+        <Button Name="tlBrDeleteButton" ToolTip="Delete">
+            <fa:ImageAwesome Height="18" Icon="TrashOutline"/>
+        </Button>
+    </ToolBar>
+</UserControl>

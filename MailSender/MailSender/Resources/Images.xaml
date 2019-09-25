@@ -1,0 +1,523 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <DrawingGroup x:Key="StatisticsDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="10,10,110,110" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="30,110" EndPoint="30,100" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,110" EndPoint="40,90" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="50,110" EndPoint="50,80" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="60,110" EndPoint="60,70" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="70,110" EndPoint="70,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="80,110" EndPoint="80,50" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="90,110" EndPoint="90,40" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="100,110" EndPoint="100,30" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="StatisticsDrawingImage" Drawing="{StaticResource StatisticsDrawingGroup}" />
+  <DrawingGroup x:Key="SchedulerDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <EllipseGeometry RadiusX="50" RadiusY="50" Center="64,64" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="64,64" EndPoint="64,25" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="6" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="64,64" EndPoint="90,64" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="SchedulerDrawingImage" Drawing="{StaticResource SchedulerDrawingGroup}" />
+  <DrawingGroup x:Key="DocsDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="24,6,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF191919" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="34,16,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="44,26,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,50" EndPoint="93,50" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,60" EndPoint="93,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,70" EndPoint="93,70" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,80" EndPoint="93,80" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,90" EndPoint="93,90" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,100" EndPoint="93,100" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="DocsDrawingImage" Drawing="{StaticResource DocsDrawingGroup}" />
+  <DrawingGroup x:Key="EditDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="28,6,73,117" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,30" EndPoint="90,30" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,40" EndPoint="90,40" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,50" EndPoint="90,50" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,60" EndPoint="90,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,70" EndPoint="90,70" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,80" EndPoint="90,80" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,90" EndPoint="90,90" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,100" EndPoint="90,100" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <DrawingGroup Transform="0.939692620785908,0.342020143325669,-0.342020143325669,0.939692620785908,27.6986217093545,-31.0866897287304">
+        <GeometryDrawing Brush="#FFFFFFFF">
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <RectangleGeometry RadiusX="0" RadiusY="0" Rect="97,18,10,90" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Transform="-0.342020143325669,0.939692620785908,-0.939692620785908,-0.342020143325669,215.445783918686,60.3132380246356">
+        <GeometryDrawing>
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <LineGeometry StartPoint="90,110" EndPoint="90,110" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <DrawingGroup Transform="0.342020143325669,0.939692620785908,-0.939692620785908,0.342020143325669,156.004576820396,-2.79762542869624">
+        <GeometryDrawing>
+          <GeometryDrawing.Pen>
+            <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+          </GeometryDrawing.Pen>
+          <GeometryDrawing.Geometry>
+            <LineGeometry StartPoint="80,110" EndPoint="80,110" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+      </DrawingGroup>
+      <GeometryDrawing Brush="#FF000000">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <EllipseGeometry RadiusX="3" RadiusY="3" Center="86,107" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="EditDrawingImage" Drawing="{StaticResource EditDrawingGroup}" />
+  <Geometry x:Key="MailingGeometry1">F1 M128,128z M0,0z M7.508133,24.751709C8.508133,24.501709 48.508133,51.751709 53.508133,51.876709 58.508133,52.001709 98.008133,25.251709 98.008133,25.126709 98.008133,25.001709 6.508133,25.001709 7.508133,24.751709z</Geometry>
+  <Geometry x:Key="MailingGeometry2">F1 M128,128z M0,0z M17.508118,35.001709C18.508118,34.751709 58.508118,62.001709 63.508118,62.126709 68.508118,62.251709 108.008118,35.501709 108.008118,35.376709 108.008118,35.251709 16.508118,35.251709 17.508118,35.001709z</Geometry>
+  <Geometry x:Key="MailingGeometry3">F1 M128,128z M0,0z M27.508118,45.001709C28.508118,44.751709 68.508118,72.001709 73.508118,72.126709 78.508118,72.251709 118.008118,45.501709 118.008118,45.376709 118.008118,45.251709 26.508118,45.251709 27.508118,45.001709z</Geometry>
+  <DrawingGroup x:Key="MailingDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="6,24,95,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource MailingGeometry1}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF191919" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="16,34,95,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource MailingGeometry2}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF191919" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="26,44,95,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource MailingGeometry3}">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="MailingDrawingImage" Drawing="{StaticResource MailingDrawingGroup}" />
+  <DrawingGroup x:Key="AllElementsDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="24,6,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF191919" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="34,16,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="44,26,60,95" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,50" EndPoint="93,50" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,60" EndPoint="93,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,70" EndPoint="93,70" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,80" EndPoint="93,80" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,90" EndPoint="93,90" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF333333" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="55,100" EndPoint="93,100" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="AllElementsDrawingImage" Drawing="{StaticResource AllElementsDrawingGroup}" />
+  <DrawingGroup x:Key="DocDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing Brush="#FFFFFFFF">
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="8" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <RectangleGeometry RadiusX="0" RadiusY="0" Rect="28,6,73,117" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingGroup Opacity="1">
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,30" EndPoint="90,30" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,40" EndPoint="90,40" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,50" EndPoint="90,50" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,60" EndPoint="90,60" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,70" EndPoint="90,70" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,80" EndPoint="90,80" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,90" EndPoint="90,90" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+      <GeometryDrawing>
+        <GeometryDrawing.Pen>
+          <Pen Brush="#FF000000" Thickness="4" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+        </GeometryDrawing.Pen>
+        <GeometryDrawing.Geometry>
+          <LineGeometry StartPoint="40,100" EndPoint="90,100" />
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingGroup>
+  </DrawingGroup>
+  <DrawingImage x:Key="DocDrawingImage" Drawing="{StaticResource DocDrawingGroup}" />
+</ResourceDictionary>
