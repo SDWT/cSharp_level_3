@@ -73,6 +73,13 @@ namespace MailSender
 
             #endregion
 
+            if (cbSmtpServer.SelectedValue == null)
+            {
+                var eW = new ErrorWindow("Smtp-server не указан.");
+                eW.ShowDialog();
+                MainTabControl.SelectedIndex = 0;
+                return;
+            }
             string FullAddress = cbSmtpServer.SelectedValue.ToString();
             var arr = FullAddress.Split(':');
 
@@ -94,12 +101,12 @@ namespace MailSender
             
 
             // Времменно отключена отправка для тестирования
-            return;
+            //return;
 
             try
             {
                 var results = SendService.SmtpSendMessages(strSender, password,
-                Smtps.MailRu.SmptUrl, Smtps.MailRu.Port, title, body, listStrMails);
+                smtpUrl, smtpPort, title, body, listStrMails);
 
 
                 for (int i = 0; i < results.Count; i++)
