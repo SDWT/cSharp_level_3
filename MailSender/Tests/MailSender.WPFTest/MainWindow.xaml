@@ -113,6 +113,15 @@
                                 <fa:ImageAwesome Height="18" Icon="Trash" Foreground="Red"/>
                             </Button>
                         </ToolBar>
+                        <!--<ToolBar Band="1">
+                            <ctrl:ToolBarSelector/>
+                        </ToolBar>-->
+                        <ctrl:CustomToolBarSelector Band="0" Text="TestText"
+                                                    ItemSource="{x:Static data:TestData.Senders}"
+                                                    ComboBoxDisplayMemberPath="Name"
+                                                    ComboBoxSelectedValuePath="Address">
+                            
+                        </ctrl:CustomToolBarSelector>
                     </ToolBarTray>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False"
                               IsReadOnly="True"
