@@ -4,8 +4,10 @@ using System.Windows;
 using System.Net;
 using System.Net.Mail;
 using System.Security;
+using System.IO;
 
 using MailSender.Model;
+using System.Windows.Documents;
 
 namespace MailSender
 {
@@ -33,8 +35,44 @@ namespace MailSender
 
             // Email
             string title = txtBxEmailTitle.Text; // Email title / Тема
-            string body = txtBxEmailBody.Text;   // Email body / Текст
-            //string body = rchTxtBxEmailBody.Document;   // Email body / Текст
+            //string body = txtBxEmailBody.Text;   // Email body / Текст
+            string body;
+
+            #region RichTextBox
+            // Create Stream for text
+            using (var stream = new MemoryStream(100))
+            {
+                // Get text from RichTextBox
+                TextRange range = new TextRange(rchTxtBxEmailBody.Document.ContentStart,
+                    rchTxtBxEmailBody.Document.ContentEnd);
+
+
+                // Save text to stream
+                range.Save(stream, DataFormats.Text);
+
+                // Set seek to begin
+                stream.Seek(0, SeekOrigin.Begin);
+
+                // Create Reader from stream
+                var reader = new StreamReader(stream);
+
+                // Convert stream to string
+                body = reader.ReadToEnd();
+            }
+            body = body.Trim();
+
+            if (body == string.Empty)
+            {
+                var eW = new ErrorWindow("Письмо не заполнено, переход в редактор писем.");
+                eW.ShowDialog();
+                MainTabControl.SelectedIndex = 2;
+                return;
+            }
+
+            #endregion
+
+            // Времменно отключена отправка для тестирования
+            return;
 
             try
             {
