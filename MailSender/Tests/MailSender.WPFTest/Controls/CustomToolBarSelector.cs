@@ -170,25 +170,30 @@ namespace MailSender.WPFTest.Controls
         public CustomToolBarSelector()
         {
             #region Label
+            lblText.MinWidth = 85;
+
             this.AddChild(lblText);
             #endregion
             #region ComboBox
+            cmbBx.MinWidth = 75;
+            cmbBx.MaxWidth = 150;
+
             this.AddChild(cmbBx);
             #endregion
 
             #region Buttons
             #region images
             var imgAdd = new Image();
-            imgAdd.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Plus, Brushes.Black);
+            imgAdd.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Plus, Brushes.Green);
             imgAdd.Height = 18;
 
             var imgEdit = new Image();
-            imgEdit.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Edit, Brushes.Black);
+            imgEdit.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Edit, Brushes.Brown);
             imgEdit.Height = 18;
 
 
             var imgDelete = new Image();
-            imgDelete.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Trash, Brushes.Black);
+            imgDelete.Source = ImageAwesome.CreateImageSource(FontAwesomeIcon.Trash, Brushes.Red);
             imgDelete.Height = 18;
             #endregion
 
