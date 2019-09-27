@@ -73,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ListController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TabItemsSwither.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,12 +94,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\CustomToolBarSelector.cs" />
+    <Compile Include="Controls\ListController.xaml.cs">
+      <DependentUpon>ListController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TabItemsSwither.xaml.cs">
       <DependentUpon>TabItemsSwither.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ToolBarSelector.xaml.cs">
       <DependentUpon>ToolBarSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MailSenderViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

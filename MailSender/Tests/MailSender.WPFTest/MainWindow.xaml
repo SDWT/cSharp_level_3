@@ -49,12 +49,18 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ToolBarTray Grid.Row="0">
-                        <ctrl:CustomToolBarSelector Band="0" Text="Отправители"
+                        <!--<ctrl:CustomToolBarSelector Band="0" Text="Отправители"
                                                     ItemSource="{x:Static data:TestData.Senders}"
                                                     ComboBoxDisplayMemberPath="Name"
                                                     ComboBoxSelectedValuePath="Address">
 
-                        </ctrl:CustomToolBarSelector>
+                        </ctrl:CustomToolBarSelector>-->
+                        <ToolBar>
+                            <ctrl:ListController Items="{x:Static data:TestData.Senders}"
+                                                 PanelName="Отправители"
+                                                 ViewPropertyPath="Name"
+                                                 />
+                        </ToolBar>
                         <!--<ToolBar>
                             <Label MinWidth="85">Отправители</Label>
                             <ComboBox MinWidth="75" MaxWidth="150" 
@@ -62,19 +68,32 @@
                                       DisplayMemberPath="Name"
                                       SelectedValuePath="Address"
                                       SelectedIndex="1">
-                            </ComboBox>
-                            <Button ToolTip="Create">
-                                <fa:ImageAwesome Height="18" Icon="Plus"/>
-                            </Button>
-                            <Button ToolTip="Edit">
-                                <fa:ImageAwesome Height="18" Icon="Edit"/>
-                            </Button>
-                            <Button ToolTip="Delete">
-                                <fa:ImageAwesome Height="18" Icon="TrashOutline"/>
-                            </Button>
-                        </ToolBar>-->
+                                </ComboBox>
+                                <Button ToolTip="Create">
+                                    <fa:ImageAwesome Height="18" Icon="Plus"/>
+                                </Button>
+                                <Button ToolTip="Edit">
+                                    <fa:ImageAwesome Height="18" Icon="Edit"/>
+                                </Button>
+                                <Button ToolTip="Delete">
+                                    <fa:ImageAwesome Height="18" Icon="TrashOutline"/>
+                                </Button>
+                        </ToolBar> -->
                         <ToolBar Band="1">
-                            <Label MinWidth="85">Сервера</Label>
+                            <ctrl:ListController Items="{x:Static data:TestData.Servers}"
+                                                 PanelName="Сервера"
+                                                 ViewPropertyPath="Name">
+                                <ctrl:ListController.ItemTemplate>
+                                    <DataTemplate DataType="x:Type entities:Server">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=Port:{0}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ctrl:ListController.ItemTemplate>
+                            </ctrl:ListController>
+                            
+                            <!--<Label MinWidth="85">Сервера</Label>
                             <ComboBox MinWidth="75" MaxWidth="150"
                                       ItemsSource="{x:Static data:TestData.Servers}">
                                 <ComboBox.ItemTemplate>
@@ -82,7 +101,7 @@
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=Port:{0}}"/>
-                                            <!--<TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>-->
+                                            <TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
@@ -97,7 +116,7 @@
                             </Button>
                             <Button ToolTip="Delete">
                                 <fa:ImageAwesome Height="18" Icon="Trash" Foreground="Red"/>
-                            </Button>
+                            </Button>-->
                         </ToolBar>
                         <ToolBar Band="0">
                             <Label MinWidth="85">Перейти в планировщик</Label>
@@ -120,7 +139,7 @@
                         <!--<ToolBar Band="1">
                             <ctrl:ToolBarSelector/>
                         </ToolBar>-->
-                        
+
                     </ToolBarTray>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False"
                               IsReadOnly="True"
