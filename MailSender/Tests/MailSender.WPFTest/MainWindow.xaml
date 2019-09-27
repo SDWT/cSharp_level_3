@@ -10,6 +10,7 @@
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:views="clr-namespace:MailSender.lib.Views;assembly=MailSender.lib"
+        xmlns:commands="clr-namespace:MailSender.WPFTest.Commands"
         xmlns:local="clr-namespace:MailSender.WPFTest"
         xmlns:ctrl="clr-namespace:MailSender.WPFTest.Controls"
         mc:Ignorable="d"
@@ -23,7 +24,11 @@
                 <MenuItem Header="Open"/>
                 <MenuItem Header="Save"/>
                 <Separator/>
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit">
+                    <MenuItem.Command>
+                        <commands:ApplicationCloseCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Service"/>
             <MenuItem Header="Help"/>
