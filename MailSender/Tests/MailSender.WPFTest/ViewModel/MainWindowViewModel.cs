@@ -8,7 +8,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using MailSender.lib.Data.Linq2SQL;
-using MailSender.lib.Services;
+using MailSender.lib.Services.Interfaces;
 
 namespace MailSender.WPFTest.ViewModel
 {
@@ -33,7 +33,7 @@ namespace MailSender.WPFTest.ViewModel
         }
         #endregion
 
-        private RecipientsDataProvider _RecipientsProvider;
+        private IRecipientsDataProvider _RecipientsProvider;
 
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
 
@@ -44,7 +44,7 @@ namespace MailSender.WPFTest.ViewModel
 
         #endregion
 
-        public MainWindowViewModel(RecipientsDataProvider RecipientsProvider)
+        public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 

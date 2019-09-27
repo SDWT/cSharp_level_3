@@ -16,7 +16,9 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
-using MailSender.lib.Services;
+using MailSender.lib.Services.Interfaces;
+using MailSender.lib.Services.InMemory;
+using MailSender.lib.Services.Linq2SQL;
 using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.WPFTest.ViewModel
@@ -48,7 +50,8 @@ namespace MailSender.WPFTest.ViewModel
 
             sevices.Register<MainWindowViewModel>();
 
-            sevices.Register<RecipientsDataProvider>();
+            sevices.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
+            //sevices.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
             sevices.Register(() => new MailSenderDBDataContext());
 
             //SimpleIoc.Default.Register<MainViewModel>();

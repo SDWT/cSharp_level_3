@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Services.Interfaces;
 
-namespace MailSender.lib.Services
+namespace MailSender.lib.Services.Linq2SQL
 {
-    public class RecipientsDataProvider
+    public class Linq2SQLRecipientsDataProvider : IRecipientsDataProvider
     {
         private readonly MailSenderDBDataContext _db;
 
-        public RecipientsDataProvider(MailSenderDBDataContext db) { _db = db; }
+        public Linq2SQLRecipientsDataProvider(MailSenderDBDataContext db) { _db = db; }
 
         public IEnumerable<Recipient> GetAll()
         {
