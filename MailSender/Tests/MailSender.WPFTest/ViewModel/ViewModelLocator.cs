@@ -16,6 +16,9 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
+using MailSender.lib.Services;
+using MailSender.lib.Data.Linq2SQL;
+
 namespace MailSender.WPFTest.ViewModel
 {
     /// <summary>
@@ -29,6 +32,7 @@ namespace MailSender.WPFTest.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
+            var sevices = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
@@ -42,7 +46,11 @@ namespace MailSender.WPFTest.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainWindowViewModel>();
+            sevices.Register<MainWindowViewModel>();
+
+            sevices.Register<RecipientsDataProvider>();
+            sevices.Register(() => new MailSenderDBDataContext());
+
             //SimpleIoc.Default.Register<MainViewModel>();
         }
 
@@ -54,7 +62,7 @@ namespace MailSender.WPFTest.ViewModel
         //    }
         //}
 
-        public MainWindowViewModel Main
+        public MainWindowViewModel MainWindowVM
         {
             get
             {

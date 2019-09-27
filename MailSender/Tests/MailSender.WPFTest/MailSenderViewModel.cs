@@ -8,7 +8,7 @@ using MailSender.lib.MVVM;
 
 namespace MailSender.WPFTest 
 {
-    class MailSenderViewModel : ViewModel
+    class MailSenderViewModel : MailSender.lib.MVVM.ViewModel
     {
         private string _Title = "Заголовок";
     }

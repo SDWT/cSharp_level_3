@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight;
 
 namespace MailSender.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
     }
 }

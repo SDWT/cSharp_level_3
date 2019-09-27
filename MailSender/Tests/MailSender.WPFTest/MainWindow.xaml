@@ -12,7 +12,9 @@
         xmlns:local="clr-namespace:MailSender.WPFTest"
         xmlns:ctrl="clr-namespace:MailSender.WPFTest.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding WindowTitle}" 
+        Height="450" Width="800"
+        DataContext="{Binding MainWindowVM, Source={StaticResource Locator}}">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
@@ -41,14 +43,15 @@
         <TabControl x:Name="MainTabControl" SelectedIndex="0">
             <TabItem Header="Списки рассылки">
                 <Grid>
-                    <Grid.Resources>
-                        <db:MailSenderDBDataContext x:Key="DataBase"/>
-                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="120*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ToolBarTray Grid.Row="0">
+                    <ToolBarTray Grid.Row="0" Grid.ColumnSpan="2">
                         <!--<ctrl:CustomToolBarSelector Band="0" Text="Отправители"
                                                     ItemSource="{x:Static data:TestData.Senders}"
                                                     ComboBoxDisplayMemberPath="Name"
@@ -92,7 +95,7 @@
                                     </DataTemplate>
                                 </ctrl:ListController.ItemTemplate>
                             </ctrl:ListController>
-                            
+
                             <!--<Label MinWidth="85">Сервера</Label>
                             <ComboBox MinWidth="75" MaxWidth="150"
                                       ItemsSource="{x:Static data:TestData.Servers}">
@@ -143,8 +146,10 @@
                     </ToolBarTray>
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False"
                               IsReadOnly="True"
-                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
-                              GridLinesVisibility="Vertical" AlternatingRowBackground="LightGray">
+                              ItemsSource="{Binding Recipients}"
+                              GridLinesVisibility="Vertical" 
+                              AlternatingRowBackground="LightGray" 
+                              Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
