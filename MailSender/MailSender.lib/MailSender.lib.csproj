@@ -49,6 +49,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\RecipientsEditor.xaml.cs">
+      <DependentUpon>RecipientsEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\RecipientsEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RecipientsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
