@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 using GalaSoft.MvvmLight;
@@ -34,9 +36,29 @@ namespace MailSender.ViewModel
         }
         #endregion
 
+        #region RecipientsFilter
+        private string _RecipientsFilter = default(string);
+        public string RecipientsFilter
+        {
+            get => _RecipientsFilter;
+            set
+            {
+                var newValue = value;
+                if (Set(ref _RecipientsFilter, newValue))
+                {
+                    var yourCostumFilter = new Predicate<object>(item => ((Recipient)item).Name.Contains(newValue));
+                    //now we add our Filter
+                    Recipients.Filter = yourCostumFilter;
+                }
+
+            }
+        }
+        #endregion
+
         private IRecipientsDataProvider _RecipientsProvider;
 
-        public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
+        public ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
+        public ICollectionView Recipients { get; private set; }
 
         #region Commands
         public ICommand RefreshDataCommand { get; }
@@ -52,6 +74,8 @@ namespace MailSender.ViewModel
             RefreshDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecute);
             SaveSelectedRecipientCommand = new RelayCommand(OnSaveSelectedRecipientCommandExecuted);
             CreateSelectedRecipientCommand = new RelayCommand(OnCreateSelectedRecipientCommandExecuted);
+
+            Recipients = CollectionViewSource.GetDefaultView(_Recipients);
         }
 
         private void OnCreateSelectedRecipientCommandExecuted()
@@ -73,7 +97,7 @@ namespace MailSender.ViewModel
 
         private void RefreshData()
         {
-            var recipients = Recipients;
+            var recipients = _Recipients;
             recipients.Clear();
 
             foreach (var recipient in _RecipientsProvider.GetAll())
