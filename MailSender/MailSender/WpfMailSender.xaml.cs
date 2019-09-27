@@ -10,6 +10,7 @@ using MailSender.Model;
 using System.Windows.Documents;
 using System.Linq;
 using System.Text;
+using MailSender.lib.Entities;
 
 namespace MailSender
 {
@@ -72,15 +73,24 @@ namespace MailSender
             }
 
             #endregion
-
-            if (cbSmtpServer.SelectedValue == null)
+            
+            // every time null
+            if (lcSmtpServer.SelectedItem == null)
             {
                 var eW = new ErrorWindow("Smtp-server не указан.");
                 eW.ShowDialog();
                 MainTabControl.SelectedIndex = 0;
                 return;
             }
-            string FullAddress = cbSmtpServer.SelectedValue.ToString();
+            if (!(lcSmtpServer.SelectedItem is Server smtp))
+            {
+                var eW = new ErrorWindow("Ошибка в данных, передан не smtp-server.");
+                eW.ShowDialog();
+                MainTabControl.SelectedIndex = 0;
+                return;
+            }
+
+            string FullAddress = smtp.FullAddress;
             var arr = FullAddress.Split(':');
 
             StringBuilder strB = new StringBuilder();
