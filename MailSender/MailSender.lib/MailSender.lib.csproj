@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -53,6 +54,8 @@
     <Compile Include="Entities\Server.cs" />
     <Compile Include="MailSenderService.cs" />
     <Compile Include="MailSheduler.cs" />
+    <Compile Include="MVVM\LambdaCommand.cs" />
+    <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
