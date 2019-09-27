@@ -9,6 +9,7 @@
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
+        xmlns:views="clr-namespace:MailSender.lib.Views;assembly=MailSender.lib"
         xmlns:local="clr-namespace:MailSender.WPFTest"
         xmlns:ctrl="clr-namespace:MailSender.WPFTest.Controls"
         mc:Ignorable="d"
@@ -144,7 +145,7 @@
                         </ToolBar>-->
 
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False"
+                    <!--<DataGrid Grid.Row="1" AutoGenerateColumns="False"
                               IsReadOnly="True"
                               ItemsSource="{Binding Recipients}"
                               GridLinesVisibility="Vertical" 
@@ -155,7 +156,15 @@
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Address" Width="*" Binding="{Binding Address}"/>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </DataGrid>-->
+                    <Grid Grid.Row="1"
+                          Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <!--<ColumnDefinition />-->
+                        </Grid.ColumnDefinitions>
+                        <views:RecipientsView />
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Планировщик">
