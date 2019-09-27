@@ -16,6 +16,11 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
+using MailSender.lib.Services.Interfaces;
+using MailSender.lib.Services.InMemory;
+using MailSender.lib.Services.Linq2SQL;
+using MailSender.lib.Data.Linq2SQL;
+
 namespace MailSender.ViewModel
 {
     /// <summary>
@@ -29,33 +34,27 @@ namespace MailSender.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
+            var sevices = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
 
-            SimpleIoc.Default.Register<MainWindowViewModel>();
+
+            SimpleIoc.Default.Register<WpfMailSenderViewModel>();
+            sevices.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
+            //sevices.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
+            sevices.Register(() => new MailSenderDBDataContext());
         }
 
-        public MainWindowViewModel Main
+        public WpfMailSenderViewModel MailSenderViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
+                return ServiceLocator.Current.GetInstance<WpfMailSenderViewModel>();
             }
         }
         
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
         }
     }
 }

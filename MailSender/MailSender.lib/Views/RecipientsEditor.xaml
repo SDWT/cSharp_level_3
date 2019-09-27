@@ -8,19 +8,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="320" d:DesignWidth="250">
     <UserControl.Resources>
-        <Style TargetType="{x:Type fa:ImageAwesome}">
+        <!--<Style TargetType="{x:Type fa:ImageAwesome}">
             <Setter Property="Height" Value="18"/>
-        </Style>
-        <Style TargetType="{x:Type Button}">
+        </Style>-->
+        <!--<Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="15, 7"/>
             <Setter Property="Margin" Value="5"/>
-        </Style>
-        <Style TargetType="{x:Type TextBlock}">
+        </Style>-->
+        <!--<Style TargetType="{x:Type TextBlock}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Margin" Value="5,0"/>
-        </Style>
+        </Style>-->
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,10 +35,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="ID" Grid.Column="0" Grid.Row="0"/>
-        <TextBlock Text="Имя" Grid.Column="0" Grid.Row="1"/>
-        <TextBlock Text="Email" Grid.Column="0" Grid.Row="2"/>
-        <TextBlock Text="Описание" Grid.Column="0" Grid.Row="3"/>
+        <TextBlock Margin="5.0" Text="ID" Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Margin="5.0" Text="Имя" Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Margin="5.0" Text="Email" Grid.Column="0" Grid.Row="2"/>
+        <TextBlock Margin="5.0" Text="Описание" Grid.Column="0" Grid.Row="3"/>
 
         <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedRecipient.Id}"/>
         <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedRecipient.Name}"/>
@@ -50,11 +50,11 @@
                      Rows="1" Columns="2">
             <Button Padding="15, 7" Margin="5"
                     Command="{Binding CreateSelectedRecipientCommand}">
-                <fa:ImageAwesome Icon="Plus"/>
+                <fa:ImageAwesome Icon="Plus" Height="18"/>
             </Button>
             <Button Padding="15, 7" Margin="5"
                     Command="{Binding SaveSelectedRecipientCommand}">
-                <fa:ImageAwesome Icon="Save"/>
+                <fa:ImageAwesome Icon="Save" Height="18"/>
             </Button>
         </UniformGrid>
     </Grid>
