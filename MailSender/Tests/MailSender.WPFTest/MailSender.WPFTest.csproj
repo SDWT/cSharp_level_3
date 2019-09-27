@@ -121,7 +121,6 @@
     <Compile Include="Controls\ToolBarSelector.xaml.cs">
       <DependentUpon>ToolBarSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MailSenderViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
