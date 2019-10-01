@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MailSender.lib.Services.Interfaces
+namespace MailSender.lib.Services.DataProviders.Interfaces
 {
     public interface IDataProvider<T>
     {

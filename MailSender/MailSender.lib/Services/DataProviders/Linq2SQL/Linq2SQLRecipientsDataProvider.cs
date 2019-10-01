@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MailSender.lib.Entities;
-using MailSender.lib.Services.Interfaces;
+using MailSender.lib.Services.DataProviders.Interfaces;
 
-namespace MailSender.lib.Services.Linq2SQL
+namespace MailSender.lib.Services.DataProviders.Linq2SQL
 {
     public class Linq2SQLRecipientsDataProvider : IRecipientsDataProvider
     {

@@ -17,9 +17,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
 using MailSender.lib.Services.Interfaces;
-using MailSender.lib.Services.InMemory;
-using MailSender.lib.Services.Linq2SQL;
+using MailSender.lib.Services.DataProviders.Interfaces;
+using MailSender.lib.Services.DataProviders.InMemory;
+using MailSender.lib.Services.DataProviders.Linq2SQL;
 using MailSender.lib.Data.Linq2SQL;
+using System;
 
 namespace MailSender.WPFTest.ViewModel
 {
@@ -34,7 +36,7 @@ namespace MailSender.WPFTest.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            var sevices = SimpleIoc.Default;
+            var services = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
@@ -48,11 +50,16 @@ namespace MailSender.WPFTest.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            sevices.Register<MainWindowViewModel>();
+            //sevices.Register<MainWindowViewModel>();
 
-            sevices.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
-            //sevices.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
-            sevices.Register(() => new MailSenderDBDataContext());
+            //services.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
+            ////services.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
+            //services.Register(() => new MailSenderDBDataContext());
+
+            services
+               .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
+               .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
+               .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();
 
             //SimpleIoc.Default.Register<MainViewModel>();
         }
@@ -76,6 +83,34 @@ namespace MailSender.WPFTest.ViewModel
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
+        }
+    }
+
+    public static class SimpleIocExtentions
+    {
+        public static SimpleIoc TryRegister<TIntrface, TService>(this SimpleIoc services)
+            where TIntrface : class
+            where TService : class, TIntrface
+        {
+            if (services.IsRegistered<TIntrface>()) return services;
+            services.Register<TIntrface, TService>();
+            return services;
+        }
+
+        public static SimpleIoc TryRegister<TService>(this SimpleIoc services)
+            where TService : class
+        {
+            if (services.IsRegistered<TService>()) return services;
+            services.Register<TService>();
+            return services;
+        }
+
+        public static SimpleIoc TryRegister<TService>(this SimpleIoc services, Func<TService> Factory)
+            where TService : class
+        {
+            if (services.IsRegistered<TService>()) return services;
+            services.Register(Factory);
+            return services;
         }
     }
 }

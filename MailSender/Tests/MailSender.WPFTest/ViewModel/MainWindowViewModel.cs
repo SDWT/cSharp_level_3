@@ -9,8 +9,12 @@ using System.Windows.Data;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+
 using MailSender.lib.Entities;
 using MailSender.lib.Services.Interfaces;
+using MailSender.lib.Services.DataProviders.Interfaces;
+using MailSender.lib.Services.DataProviders.InMemory;
+using MailSender.lib.Services.DataProviders.Linq2SQL;
 
 namespace MailSender.WPFTest.ViewModel
 {
