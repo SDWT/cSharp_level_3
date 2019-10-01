@@ -1,4 +1,4 @@
-﻿using MailSender.lib.Data.Linq2SQL;
+﻿using MailSender.lib.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,14 @@ namespace MailSender.lib.Services.Interfaces
     {
         IEnumerable<Recipient> GetAll();
 
-        int Create(Recipient recipient);
+        Recipient GetById(int id);
+
+        int Create(Recipient item);
+
+        void Edit(int id, Recipient item);
+
+        bool Remove(int id);
+
         void SaveChanges();
     }
 }

@@ -72,7 +72,7 @@
                                     <DataTemplate DataType="x:Type entities:Server">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=Port:{0}}"/>
+                                            <TextBlock Text="{Binding Host}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=Port:{0}}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ctrl:ListController.ItemTemplate>

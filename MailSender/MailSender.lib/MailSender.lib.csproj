@@ -49,7 +49,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Base\BaseEntity.cs" />
+    <Compile Include="Entities\Base\HumanEntity.cs" />
+    <Compile Include="Entities\Base\NamedEntity.cs" />
+    <Compile Include="Entities\Email.cs" />
+    <Compile Include="Entities\Recipient.cs" />
+    <Compile Include="Entities\RecipientsList.cs" />
+    <Compile Include="Entities\SchedulerTask.cs" />
     <Compile Include="Services\InMemory\InMemoryRecipientsDataProvider.cs" />
+    <Compile Include="Services\Interfaces\IDataProvider.cs" />
     <Compile Include="Services\Interfaces\IRecipientsDataProvider.cs" />
     <Compile Include="Services\Linq2SQL\Linq2SQLRecipientsDataProvider.cs" />
     <Compile Include="Views\RecipientsEditor.xaml.cs">
