@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace MailSender.lib.Services.Interfaces
 {
-    abstract class IDataProvider<T>
+    public interface IDataProvider<T>
     {
+        IEnumerable<T> GetAll();
+
+        T GetById(int id);
+
+        int Create(T item);
+
+        void Edit(int id, T item);
+
+        bool Remove(int id);
+
+        void SaveChanges();
     }
 }

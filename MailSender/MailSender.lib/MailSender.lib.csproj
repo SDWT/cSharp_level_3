@@ -58,7 +58,12 @@
     <Compile Include="Entities\SchedulerTask.cs" />
     <Compile Include="Services\InMemory\InMemoryRecipientsDataProvider.cs" />
     <Compile Include="Services\Interfaces\IDataProvider.cs" />
+    <Compile Include="Services\Interfaces\IEmailsDataProvider.cs" />
     <Compile Include="Services\Interfaces\IRecipientsDataProvider.cs" />
+    <Compile Include="Services\Interfaces\IRecipientsListsDataProvider.cs" />
+    <Compile Include="Services\Interfaces\ISendersDataProvider.cs" />
+    <Compile Include="Services\Interfaces\IServersDataProvider.cs" />
+    <Compile Include="Services\Interfaces\ISchedulerTasksDataProvider.cs" />
     <Compile Include="Services\Linq2SQL\Linq2SQLRecipientsDataProvider.cs" />
     <Compile Include="Views\RecipientsEditor.xaml.cs">
       <DependentUpon>RecipientsEditor.xaml</DependentUpon>
