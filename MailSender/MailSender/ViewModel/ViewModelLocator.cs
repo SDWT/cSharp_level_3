@@ -39,16 +39,16 @@ namespace MailSender.ViewModel
             var services = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            services.Register<WpfMailSenderViewModel>();
 
             services
-               .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
-               .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
-               .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();
+                .TryRegister<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>()
+                .TryRegister(() => new MailSenderDBDataContext());
 
-            //SimpleIoc.Default.Register<WpfMailSenderViewModel>();
-            //services.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
-            ////sevices.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
-            //services.Register(() => new MailSenderDBDataContext());
+            //services
+            //    .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
+            //    .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
+            //    .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();
         }
 
         public WpfMailSenderViewModel MailSenderViewModel

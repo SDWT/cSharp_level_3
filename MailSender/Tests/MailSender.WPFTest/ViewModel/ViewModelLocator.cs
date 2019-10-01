@@ -39,6 +39,8 @@ namespace MailSender.WPFTest.ViewModel
             var services = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            services.Register<MainWindowViewModel>();
+
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
             ////    // Create design time view services and models
@@ -50,18 +52,14 @@ namespace MailSender.WPFTest.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            //sevices.Register<MainWindowViewModel>();
-
-            //services.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
-            ////services.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
-            //services.Register(() => new MailSenderDBDataContext());
-
             services
-               .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
-               .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
-               .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();
+                .TryRegister<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>()
+                .TryRegister(() => new MailSenderDBDataContext());
 
-            //SimpleIoc.Default.Register<MainViewModel>();
+            //services
+            //    .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
+            //    .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
+            //    .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();
         }
 
         //public MainViewModel Main
