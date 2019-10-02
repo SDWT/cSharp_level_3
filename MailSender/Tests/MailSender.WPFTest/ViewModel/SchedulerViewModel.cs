@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -13,6 +14,12 @@ namespace MailSender.WPFTest.ViewModel
 {
     public class SchedulerViewModel : ViewModelBase
     {
+        private ObservableCollection<SchedulerTask> _Tasks = new ObservableCollection<SchedulerTask>();
+
+
+
+        DispatcherTimer timer = new DispatcherTimer();
+
         MainWindowViewModel MainWindowViewModel { get; }
 
         // Connect to MainWindowViewModel.ListsViewModel -> SelectedSender
@@ -67,6 +74,8 @@ namespace MailSender.WPFTest.ViewModel
 
             PlanCommand = new RelayCommand(OnPlanCommandExecuted, CanPlanCommandExecute);
             SendCommand = new RelayCommand(OnSendCommandExecuted, CanSendCommandExecute);
+
+            timer.Tick += Timer_Tick;
         }
 
         private bool SchedulerTaskComplete()
@@ -135,5 +144,29 @@ namespace MailSender.WPFTest.ViewModel
         public ICommand SendCommand { get; }
 
         #endregion
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            var senderService = new MailSenderService();
+
+            foreach (var task in _Tasks)
+            {
+                if (task.Time <= DateTime.Now)
+                {
+                    senderService.SmtpSendMessages(task.Sender,
+                        new System.Security.SecureString(),
+                        task.Server, task.Email, task.Recipients);
+                }
+            }
+
+
+
+            //if (dtSend.ToShortTimeString() == DateTime.Now.ToShortTimeString())
+            //{
+            //    emailSender.SendMails(emails);
+            //    timer.Stop();
+            //    MessageBox.Show("Письма отправлены.");
+            //}
+        }
     }
 }

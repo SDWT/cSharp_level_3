@@ -63,7 +63,7 @@ namespace MailSender.WPFTest.ViewModel
         private IRecipientsDataProvider _RecipientsProvider;
 
 
-        public ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
+        private ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
         public ICollectionView Recipients { get; private set; }
 
         //public ObservableCollection<Recipient> Recipients2

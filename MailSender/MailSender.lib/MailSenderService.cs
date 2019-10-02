@@ -8,6 +8,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Security;
 
+using MailSender.lib.Entities;
+
+
 namespace MailSender.lib
 {
     public class MailSenderService
@@ -15,6 +18,16 @@ namespace MailSender.lib
         public MailSenderService()
         {
 
+        }
+
+        public List<bool> SmtpSendMessages(Sender sender, SecureString password,
+            Server server, Email mail, RecipientsList recipients)
+        {
+            var list = new List<string>(recipients.Recipients.Select(r => r.Address));
+
+            return SmtpSendMessages(sender.Address, password,
+                server.Host, server.Port,
+                mail.Subject, mail.Body, list);
         }
 
         /// <summary>
