@@ -24,6 +24,31 @@
         </Style>-->
     </UserControl.Resources>
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="5,2"/>
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" 
+                                           Text="!" FontSize="18"
+                                           VerticalAlignment="Center"
+                                           Foreground="Red"
+                                           FontWeight="Bold"
+                                           Margin="3,0"
+                                           ToolTipService.BetweenShowDelay="0"
+                                           ToolTip="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, 
+                                                             ElementName=AdornedElement}"/>
+                                <Border Padding="2" BorderBrush="Red" BorderThickness="3" CornerRadius="3">
+                                    <AdornedElementPlaceholder Name="AdornedElement"/>
+                                </Border>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
@@ -47,24 +72,6 @@
                  Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True,
                                 ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"/>
         <TextBox Grid.Column="1" Grid.Row="2">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <DockPanel>
-                        <TextBlock DockPanel.Dock="Right" 
-                                  Text="!" FontSize="18"
-                                  VerticalAlignment="Center"
-                                  Foreground="Red"
-                                  FontWeight="Bold"
-                                  Margin="3,0"
-                                  ToolTipService.BetweenShowDelay="0"
-                                  ToolTip="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, 
-                                                    ElementName=AdornedElement}"/>
-                        <Border Padding="2" BorderBrush="Red" BorderThickness="3" CornerRadius="3">
-                            <AdornedElementPlaceholder Name="AdornedElement"/>
-                        </Border>
-                    </DockPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
             <TextBox.Text>
                 <Binding Path="SelectedRecipient.Address" NotifyOnValidationError="True">
                     <Binding.ValidationRules>
