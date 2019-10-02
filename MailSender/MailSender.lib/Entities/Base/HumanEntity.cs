@@ -2,6 +2,6 @@
 {
     public abstract class HumanEntity : NamedEntity
     {
-        public string Address { get; set; }
+        public virtual string Address { get; set; }
     }
 }

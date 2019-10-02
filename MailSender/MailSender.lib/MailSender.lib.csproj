@@ -73,6 +73,7 @@
     <Compile Include="Services\DataProviders\Interfaces\ISchedulerTasksDataProvider.cs" />
     <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\DataProviders\Linq2SQL\Linq2SQLRecipientsDataProvider.cs" />
+    <Compile Include="ValidationRules\RegExValidationRule.cs" />
     <Compile Include="Views\RecipientsEditor.xaml.cs">
       <DependentUpon>RecipientsEditor.xaml</DependentUpon>
     </Compile>
