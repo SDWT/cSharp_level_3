@@ -61,20 +61,46 @@ namespace MailSender.ConsoleTest
             // Не безопасно
             //clock_tread.Abort();
 
-            clock_tread.Interrupt(); // Мягкое прерывание
-            clock_tread.Abort(); // Жёсткое прерывания
+
+
+            // Оба плохи
+            //clock_tread.Interrupt(); // Мягкое прерывание - Исключинтельно в sleep
+            //clock_tread.Abort(); // Жёсткое прерывания - битые данные
+
+
             //clock_tread.Join();
+            _IsClockEnable = false;
+            if (!clock_tread.Join(200))
+                clock_tread.Interrupt();
         }
+
+        private static bool _IsClockEnable = true;
 
         private static void ClockUpdater()
         {
-            CheckThread();
-            while (true)
+            try
             {
+                CheckThread();
+                while (_IsClockEnable)
+                {
 
-                Console.Title = DateTime.Now.ToString("HH:mm:ss.ffff");
-                Thread.Sleep(100);
+                    Console.Title = DateTime.Now.ToString("HH:mm:ss.ffff");
+                    Thread.Sleep(100);
+                }
             }
+            catch (ThreadAbortException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            catch (ThreadInterruptedException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            Console.WriteLine("Thread {0} end", Thread.CurrentThread.ManagedThreadId);
+
+
         }
 
         private static void CrazyPrinter(object obj)
@@ -110,7 +136,7 @@ namespace MailSender.ConsoleTest
 
         public void Print()
         {
-            Program.CheckThread();
+            ThreadTest.CheckThread();
 
             for (int i = 0; i < 20; i++)
             {
