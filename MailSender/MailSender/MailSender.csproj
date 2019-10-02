@@ -95,7 +95,6 @@
     <Compile Include="Controls\TabItemsSwither.xaml.cs">
       <DependentUpon>TabItemsSwither.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MailSenderServiceClass.cs" />
     <Compile Include="Model\Smtp.cs" />
     <Compile Include="Model\Smtps.cs" />
     <Compile Include="ErrorWindow.xaml.cs">

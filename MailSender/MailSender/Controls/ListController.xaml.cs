@@ -69,9 +69,7 @@ namespace MailSender.Controls
                 typeof(object),
                 typeof(ListController),
                 new FrameworkPropertyMetadata(default(object),
-                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
-                    FrameworkPropertyMetadataOptions.AffectsMeasure | 
-                    FrameworkPropertyMetadataOptions.AffectsRender));
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         #endregion
