@@ -12,7 +12,7 @@ namespace MailSender.ConsoleTest
             Console.WriteLine("Поток \"{0}\"(id:{1}) запущен.", current_thread.Name, current_thread.ManagedThreadId);
         }
 
-        static void MainTest()
+        public static void MainTest()
         {
             //System.Threading.Thread
             Thread current_thread = Thread.CurrentThread;
