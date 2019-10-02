@@ -97,6 +97,7 @@
     <Compile Include="Commands\ApplicationCloseCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\SchedulerViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Controls\ListController.xaml">
       <SubType>Designer</SubType>

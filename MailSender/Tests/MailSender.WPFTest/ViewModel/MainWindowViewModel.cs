@@ -20,6 +20,7 @@ namespace MailSender.WPFTest.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public SchedulerViewModel SchedulerViewModel { get; }
         #region _WindowTitle
         private string _WindowTitle = "EmailSender";
 
@@ -80,6 +81,7 @@ namespace MailSender.WPFTest.ViewModel
 
         public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider)
         {
+            SchedulerViewModel = new SchedulerViewModel(this);
             _RecipientsProvider = RecipientsProvider;
 
             RefreshDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecute);

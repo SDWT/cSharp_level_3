@@ -113,14 +113,14 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Планировщик">
+            <TabItem Header="Планировщик" DataContext="{Binding SchedulerViewModel}">
                 <DockPanel>
                     <GroupBox Header="Управление">
                         <StackPanel>
                             <TextBlock Text="Calendar"/>
-                            <Calendar/>
+                            <Calendar SelectedDate="{Binding PlanDate}"/>
                             <!--<DatePicker/>-->
-                            <xctk:TimePicker/>
+                            <xctk:TimePicker Value="{Binding PlanTime}"/>
                             <StackPanel>
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="20, 0">
@@ -130,7 +130,7 @@
                                 </Button>
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="20, 0">
-                                        <fa:ImageAwesome Height="18" Icon="ClockOutline" DockPanel.Dock="Right"/>
+                                        <fa:ImageAwesome Height="18" Icon="Send" DockPanel.Dock="Right"/>
                                         <TextBlock Text="Отправить сейчас"/>
                                     </DockPanel>
                                 </Button>
