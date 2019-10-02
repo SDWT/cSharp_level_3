@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Linq;
 using System.Text;
 using MailSender.lib.Entities;
+using MailSender.lib;
 
 namespace MailSender
 {
@@ -26,7 +27,7 @@ namespace MailSender
 
         private void BtnSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            var SendService = new MailSenderServiceClass();
+            var SendService = new MailSenderService();
 
             // Givers
             List<string> listStrMails = new List<string>();
