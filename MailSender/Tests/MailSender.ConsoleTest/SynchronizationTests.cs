@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -41,18 +43,49 @@ namespace MailSender.ConsoleTest
                     _Messages.Add(message);
                 }
                 Thread.Sleep(100);
+
+                //try
+                //{
+                //    Monitor.Enter(__SyncRoot);
+
+                //    Console.Write("id:{0}", Thread.CurrentThread.ManagedThreadId);
+                //    Console.Write("- msg ({0})", i);
+                //    Console.WriteLine("\"{0}\"", message);
+                //    _Messages.Add(message);
+                //}
+                //finally
+                //{
+                //    if (Monitor.IsEntered(__SyncRoot))
+                //        Monitor.Exit(__SyncRoot);
+                //}
             }
             Console.WriteLine("Thread {0} end", Thread.CurrentThread.ManagedThreadId);
 
         }
     }
 
-    internal class Logger
+    // Синхронизация на уровне класса
+    [Synchronization]
+    internal class Logger : ContextBoundObject
     {
         private string _FilePath;
 
+        public string FilePath 
+        {
+            get => FilePath;
+            set
+            {
+                if (!File.Exists(value))
+                    throw new FileNotFoundException("Файл не найден", value);
+                _FilePath = value;
+
+            }
+        }
+
         public Logger(string FilePath) => _FilePath = FilePath;
 
+        // Блокировка всего метода
+        //[MethodImpl(MethodImplOptions.Synchronized)]
         public void Log(string Message)
         {
             File.AppendAllText(_FilePath, Message);

@@ -12,7 +12,11 @@ namespace MailSender.ConsoleTest
     {
         static void Main(string[] args)
         {
+            //ThreadTest.Start();
             SynchronizationTests.Start();
+
+
+            Console.ReadLine();
         }
 
     }
