@@ -13,17 +13,30 @@ namespace MailSender.ConsoleTest
         private readonly static List<string> _Messages = new List<string>();
         public static void Start()
         {
-            var threads = new Thread[10];
+            //var threads = new Thread[10];
 
-            for (int i = 0; i < threads.Length; i++)
-            {
-                //threads[i] = new Thread(() => Printer($"Message {i}")); // Замыкание
+            //for (int i = 0; i < threads.Length; i++)
+            //{
+            //    //threads[i] = new Thread(() => Printer($"Message {i}")); // Замыкание
 
-                var i0 = i;
-                threads[i] = new Thread(() => Printer($"Message {i0}")); // Замыкание
-            }
+            //    var i0 = i;
+            //    threads[i] = new Thread(() => Printer($"Message {i0}")); // Замыкание
+            //}
 
-            Array.ForEach(threads, thread => thread.Start());
+            //Array.ForEach(threads, thread => thread.Start());
+
+            //Mutex mutex = new Mutex(true, "Имя Мютекса");
+            //mutex.WaitOne();
+            //mutex.ReleaseMutex();
+
+            //var semaphore = new Semaphore(0, 5);
+
+            //semaphore.WaitOne();
+
+            //// Критическая секция
+
+            //semaphore.Release();
+
 
         }
 
