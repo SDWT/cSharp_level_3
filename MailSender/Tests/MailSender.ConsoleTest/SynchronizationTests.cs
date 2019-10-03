@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Threading;
@@ -37,7 +38,30 @@ namespace MailSender.ConsoleTest
 
             //semaphore.Release();
 
+            var manual_event = new ManualResetEvent(false);
+            //var auto_event = new AutoResetEvent(false);
 
+            var test_threads = Enumerable.Range(0, 5).Select(i => new Thread(
+                () =>
+                {
+                    Console.WriteLine("Поток {0} ожидает запуска", 
+                        Thread.CurrentThread.ManagedThreadId);
+                    manual_event.WaitOne();
+
+                    Console.WriteLine($"Поток {i}");
+                    Console.WriteLine("Поток {0} завершился", Thread.CurrentThread.ManagedThreadId);
+                })).ToArray();
+
+            foreach (var thread in test_threads)
+            {
+                thread.Start();
+            }
+
+            Console.WriteLine("Потоки ожидают запуска");
+            Console.ReadLine();
+
+
+            manual_event.Set();
         }
 
         private static readonly object __SyncRoot = new object();
