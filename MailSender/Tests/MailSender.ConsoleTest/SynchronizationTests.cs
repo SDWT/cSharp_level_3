@@ -38,18 +38,19 @@ namespace MailSender.ConsoleTest
 
             //semaphore.Release();
 
-            var manual_event = new ManualResetEvent(false);
-            //var auto_event = new AutoResetEvent(false);
+            //var manual_event = new ManualResetEvent(false);
+            var auto_event = new AutoResetEvent(false);
 
             var test_threads = Enumerable.Range(0, 5).Select(i => new Thread(
                 () =>
                 {
                     Console.WriteLine("Поток {0} ожидает запуска", 
                         Thread.CurrentThread.ManagedThreadId);
-                    manual_event.WaitOne();
+                    auto_event.WaitOne();
 
                     Console.WriteLine($"Поток {i}");
                     Console.WriteLine("Поток {0} завершился", Thread.CurrentThread.ManagedThreadId);
+                    auto_event.Reset();
                 })).ToArray();
 
             foreach (var thread in test_threads)
@@ -59,9 +60,16 @@ namespace MailSender.ConsoleTest
 
             Console.WriteLine("Потоки ожидают запуска");
             Console.ReadLine();
+            auto_event.Set();
+            Console.ReadLine();
+            auto_event.Set();
+            Console.ReadLine();
+            auto_event.Set();
+            Console.ReadLine();
+            auto_event.Set();
+            Console.ReadLine();
+            auto_event.Set();
 
-
-            manual_event.Set();
         }
 
         private static readonly object __SyncRoot = new object();
