@@ -73,6 +73,7 @@
     <Compile Include="Services\DataProviders\Interfaces\ISchedulerTasksDataProvider.cs" />
     <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\DataProviders\Linq2SQL\Linq2SQLRecipientsDataProvider.cs" />
+    <Compile Include="Services\SmtpMailSender.cs" />
     <Compile Include="Services\StringEncoder.cs" />
     <Compile Include="Services\XmlSerializerPool.cs" />
     <Compile Include="ValidationRules\RegExValidationRule.cs" />
