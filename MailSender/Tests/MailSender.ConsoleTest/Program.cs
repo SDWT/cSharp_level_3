@@ -14,9 +14,10 @@ namespace MailSender.ConsoleTest
         {
             //ThreadTest.Start();
             //SynchronizationTests.Start();
-            ThreadPoolTests.Start();
+            //ThreadPoolTests.Start();
 
-            Console.ReadLine();
+            //Console.ReadLine();
+            HomeWork5.Start();
         }
 
     }
