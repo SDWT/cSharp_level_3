@@ -43,17 +43,26 @@ namespace MailSender.ConsoleTest
             var cursorLeft = Console.CursorLeft;
             var cursorTop = Console.CursorTop;
 
-            Console.CursorTop = _Top;
-            Console.CursorLeft = _Left + 1;
-
+            var strB = new StringBuilder();
             var cnt = 10 * _Value / _MaxValue;
 
             for (int i = 0; i < cnt; i++)
             {
-                Console.Write("█");
+                strB.Append("█");
             }
-            Console.CursorTop = cursorTop;
-            Console.CursorLeft = cursorLeft;
+
+            string progress = strB.ToString();
+            Console.SetCursorPosition(_Left + 1, _Top);
+            
+            Console.Write(progress);
+
+            Console.SetCursorPosition(cursorLeft, cursorTop);
+            //var cnt = 10 * _Value / _MaxValue;
+
+            //for (int i = 0; i < cnt; i++)
+            //{
+            //    Console.Write("█");
+            //}
         }
 
     }

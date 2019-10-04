@@ -24,7 +24,7 @@ namespace MailSender.ConsoleTest
                     case "1":
                         int num, cntThreads;
                         bool Conditions = true;
-                        Console.WriteLine("Enter Number (Number >= 1)");
+                        Console.WriteLine("Enter Number (1 <= Number <= 20)");
                         while (!(int.TryParse(Console.ReadLine(), out num)) && Conditions)
                         {
                             Conditions = true;
@@ -32,6 +32,11 @@ namespace MailSender.ConsoleTest
                             {
                                 Conditions = false;
                                 Console.WriteLine("Number less 1");
+                            }
+                            else if (num > 20)
+                            {
+                                Conditions = false;
+                                Console.WriteLine("Number higher 20");
                             }
                             else
                                 Console.WriteLine("It's not a number");
@@ -143,44 +148,6 @@ namespace MailSender.ConsoleTest
             //semaphore.Release();
         }
 
-        //static ulong Factorial(ushort Number, int level)
-        //{
-        //    if (Number <= 1)
-        //        return 1;
-
-        //    var manual_event_right = new ManualResetEvent(false);
-        //    var manual_event_left = new ManualResetEvent(false);
-
-        //    Factorial((ushort)(Number - 1), 2 * level, manual_event_left);
-        //    Factorial((ushort)(Number - 2), 2 * level + 1, manual_event_right);
-
-        //    ulong result = Number;
-        //    manual_event_left.WaitOne();
-        //    result *= _Buf[2 * level];
-        //    manual_event_right.WaitOne();
-        //    result *= _Buf[2 * level + 1];
-
-        //    return result;
-        //}
-
-        //static ulong Factorial(ushort Number, int level, ManualResetEvent ParrentEvent)
-        //{
-        //    if (Number <= 1)
-        //        return 1;
-
-        //    var manual_event_right = new ManualResetEvent(false);
-        //    var manual_event_left = new ManualResetEvent(false);
-
-        //    Factorial((ushort)(Number - 1), 2 * level, manual_event_left);
-        //    Factorial((ushort)(Number - 2), 2 * level + 1, manual_event_right);
-
-        //    ulong result = Number;
-        //    manual_event_left.WaitOne();
-        //    result *= _Buf[2 * level];
-        //    manual_event_right.WaitOne();
-        //    result *= _Buf[2 * level + 1];
-
-        //    return 0;
-        //}
+        
     }
 }

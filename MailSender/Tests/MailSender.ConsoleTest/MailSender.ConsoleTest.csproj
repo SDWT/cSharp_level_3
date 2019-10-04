@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleProgressBar.cs" />
+    <Compile Include="ConverterCSVTXT.cs" />
     <Compile Include="HomeWork5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
