@@ -9,9 +9,7 @@ namespace MailSender.ConsoleTest
 {
     static class HomeWork5
     {
-        private static long[] _Buf;
-        private static int _Count;
-        private static int _Value;
+        private static readonly object __SyncRoot = new object();
 
         public static void Start()
         {
@@ -24,7 +22,7 @@ namespace MailSender.ConsoleTest
                 switch (command.ToLower())
                 {
                     case "1":
-                        int num, cntTreads;
+                        int num, cntThreads;
                         bool Conditions = true;
                         Console.WriteLine("Enter Number (Number >= 1)");
                         while (!(int.TryParse(Console.ReadLine(), out num)) && Conditions)
@@ -40,10 +38,10 @@ namespace MailSender.ConsoleTest
                         }
 
                         Console.WriteLine("Enter threads count (count >= 1)");
-                        while (!(int.TryParse(Console.ReadLine(), out cntTreads)) && Conditions)
+                        while (!(int.TryParse(Console.ReadLine(), out cntThreads)) && Conditions)
                         {
                             Conditions = true;
-                            if (cntTreads < 1)
+                            if (cntThreads < 1)
                             {
                                 Conditions = false;
                                 Console.WriteLine("Number less 1");
@@ -52,10 +50,10 @@ namespace MailSender.ConsoleTest
                                 Console.WriteLine("It's not a number");
                         }
 
-                        Factorial(num, cntTreads);
+                        //Factorial(num, cntThreads);
+                        ThreadPool.QueueUserWorkItem(o => Factorial(num, cntThreads));
                         break;
                     case "2":
-                        LoadBarStart();
                         break;
                     case "3":
                         break;
@@ -82,51 +80,37 @@ namespace MailSender.ConsoleTest
             Console.WriteLine("exit - close program.");
         }
 
-
-        public static void LoadBarStart()
-        {
-            var cursorLeft = Console.CursorLeft;
-            var cursorTop = Console.CursorTop;
-
-            char chr = ' ';
-            _Value = 0;
-            Console.WriteLine($"[{chr, 10}]");
-        }
-        public static void LoadBarValue()
-        {
-
-        }
-
-
-
-
         static void Factorial(int Number, int CntThreads)
         {
+            long[] buf;
+
             if (Number <= 1)
             {
-                _Buf = new long[1];
-                _Buf[0] = 1;
+                buf = new long[1];
+                buf[0] = 1;
                 Console.WriteLine($"Factorial Result: 1");
                 return;
             }
-            _Buf = new long[CntThreads];
+            int count = new int();
+            buf = new long[CntThreads];
 
 
             //var semaphore = new Semaphore((int)CntThreads, 1);
-            _Count = CntThreads;
-            var progressBar = new ConsoleProgressBar(_Count);
+            count = CntThreads;
+            var progressBar = new ConsoleProgressBar(count);
 
             for (int i = 0; i < CntThreads; i++)
             {
                 int i0 = i;
-                ThreadPool.QueueUserWorkItem(o => Factorial(Number - i0, CntThreads, i0));
+                ThreadPool.QueueUserWorkItem(o => Factorial(Number - i0, CntThreads, i0,
+                    ref count, ref buf));
             }
 
             //semaphore.WaitOne();
 
-            while (_Count > 0)
+            while (count > 0)
             {
-                progressBar.Value = CntThreads - _Count;
+                progressBar.Value = CntThreads - count;
                 continue;
             }
             progressBar.Value = CntThreads;
@@ -134,13 +118,14 @@ namespace MailSender.ConsoleTest
             long result = 1;
             for (int i = 0; i < CntThreads; i++)
             {
-                result = result * _Buf[i];
+                result = result * buf[i];
             }
-            _Buf[0] = result;
+            buf[0] = result;
             Console.WriteLine($"Factorial Result: {result}");
         }
 
-        static void Factorial(int Number, int CntThreads, int Step)
+        private static void Factorial(int Number, int CntThreads, int Step, 
+            ref int count, ref long[] buf)
         {
             long result = 1;
             for (int i = Number; i > 1; i -= CntThreads)
@@ -149,9 +134,12 @@ namespace MailSender.ConsoleTest
                 Thread.Sleep(2000);
             }
 
-            _Buf[Step] = result;
-            _Count--;
-            //Console.WriteLine($"Offset: {Step}, Step: {_Count}, Result: {result}");
+            buf[Step] = result;
+            lock (__SyncRoot)
+            {
+                count--;
+                //Console.WriteLine($"Offset: {Step}, Step: {count}, Result: {result}");
+            }
             //semaphore.Release();
         }
 
