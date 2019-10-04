@@ -38,7 +38,7 @@ namespace MailSender.lib.Services
                     Password = _Password
                 };
 
-                using (var message = new MailMessage)
+                using (var message = new MailMessage())
                 {
                     message.From = new MailAddress(From.Address, From.Name);
                     message.To.Add(new MailAddress(To.Address, To.Name));
