@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace MailSender.lib.Services
 {
+    /// <summary>Объект для отправки почты по средствам smtp-протокола</summary>
     class SmtpMailSender
     {
         private readonly string _Host;
@@ -56,5 +58,10 @@ namespace MailSender.lib.Services
             }
         }
 
+        public void SendParallel(Email Message, Sender From, IEnumerable<Recipient> To)
+        {
+            foreach (var recipient in To)
+                ThreadPool.QueueUserWorkItem(o => Send(Message, From, recipient));
+        }
     }
 }
