@@ -11,16 +11,17 @@ namespace MailSender.ConsoleTest
 {
     class ConverterCSVTXT
     {
-        private FileStream _Source;
-        private FileStream _Destination;
-        private FileStream _tmp;
+        private string _DestinationPath;
         private Dictionary<int, byte[]> _Buff = new Dictionary<int, byte[]>();
         private int _NextString = 0;
+
+
+        private static readonly object __SyncRoot = new object();
 
         public void ConvertCsv2Txt(string sourcePath, string destinationPath)
         {
             var sr = new StreamReader(sourcePath);
-            _Destination = File.Open(destinationPath, FileMode.OpenOrCreate, FileAccess.Write);
+            _DestinationPath = destinationPath;
 
             var semaphore = new Semaphore(10, 20);
 
@@ -37,7 +38,8 @@ namespace MailSender.ConsoleTest
                 i++;
             }
 
-
+            //Thread.Sleep(2000);
+            
             //for (int i = 0; i < 10000; i++)
             //{
             //    var i0 = i;
@@ -56,12 +58,13 @@ namespace MailSender.ConsoleTest
         [MethodImpl(MethodImplOptions.Synchronized)]
         void WriteTXT(int NumberString, byte[] array, Semaphore semaphore)
         {
+            var destination = File.Open(_DestinationPath, FileMode.OpenOrCreate, FileAccess.Write);
 
             if (_NextString == NumberString)
             {
                 _NextString++;
                 // Write
-                _Destination.Write(array, 0, array.Length);
+                destination.Write(array, 0, array.Length);
                 semaphore.Release();
                 //Console.WriteLine($"{NumberString} : {_Buff.Count}");
 
@@ -75,32 +78,35 @@ namespace MailSender.ConsoleTest
             byte[] value;
             while (_Buff.TryGetValue(next, out value))
             {
-                _Destination.Write(value, 0, value.Length);
-                Console.WriteLine($"{next} : {_Buff.Count}");
+                destination.Write(value, 0, value.Length);
+                //Console.WriteLine($"{next} : {_Buff.Count}");
                 semaphore.Release();
                 _Buff.Remove(next);
                 next++;
             }
             _NextString = next;
 
+            destination.Close();
             //if (_NextString >= 99)
             //    _Destination.Close();
         }
 
-        public void TestWrite()
-        {
-            _Destination = File.Open("TestWrite.txt", FileMode.OpenOrCreate, FileAccess.Write);
+        //public void TestWrite()
+        //{
+        //    lock (__SyncRoot)
+        //    {
+        //        _Destination = File.Open("TestWrite.txt", FileMode.OpenOrCreate, FileAccess.Write);
+        //        var semaphore = new Semaphore(10, 20);
+        //        for (int i = 0; i < 10000; i++)
+        //        {
+        //            var i0 = i;
+        //            semaphore.WaitOne();
+        //            ThreadPool.QueueUserWorkItem(o => WriteTXT(i0, 
+        //                Encoding.UTF8.GetBytes($"N{i0}\n"),
+        //                semaphore));
+        //        }
+        //    }
+        //}
 
-            var semaphore = new Semaphore(10, 20);
-
-            for (int i = 0; i < 10000; i++)
-            {
-                var i0 = i;
-                semaphore.WaitOne();
-                ThreadPool.QueueUserWorkItem(o => WriteTXT(i0, 
-                    Encoding.UTF8.GetBytes($"N{i0}\n"),
-                    semaphore));
-            }
-        }
     }
 }

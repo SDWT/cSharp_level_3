@@ -18,11 +18,11 @@ namespace MailSender.ConsoleTest
             //ThreadPoolTests.Start();
 
             //Console.ReadLine();
-            //HomeWork5.Start();
+            HomeWork5.Start();
 
 
-            var cCsvTxt = new ConverterCSVTXT();
-            cCsvTxt.ConvertCsv2Txt("test.csv", "outtest.txt");
+            //var cCsvTxt = new ConverterCSVTXT();
+            //cCsvTxt.ConvertCsv2Txt("test.csv", "outtest.txt");
 
             #region CSV_TXT
 
@@ -44,7 +44,7 @@ namespace MailSender.ConsoleTest
             //fs.Write(arr2, 0, arr2.Length);
             //fs.Close();
             #endregion
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
     }
