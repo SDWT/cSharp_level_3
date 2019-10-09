@@ -76,7 +76,10 @@ namespace MailSender.ConsoleTest
             #endregion
 
             //TPLTests.Start();
-            TaskTests.Start();
+            //TaskTests.Start();
+
+            HomeWork6.Start();
+
             Console.ReadLine();
         }
 
