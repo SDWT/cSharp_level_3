@@ -59,9 +59,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Matrix\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="TestData\1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -31,17 +31,17 @@ namespace MailSender.ConsoleTest
                         };
                         int[,] B = new int[,]
                         {
-                            { 1, 0 },
-                            { 0, 1 }
+                            { 1, 2 },
+                            { 3, 4 }
                         };
 
-                        //var C = Multiply(A, B);
+                        var C = Multiply(A, B).GetAwaiter().GetResult();
 
-                        //foreach (var item in C)
-                        //{
-                        //    Console.Write($"{item} ");
-                        //}
-                        //Console.WriteLine();
+                        foreach (var item in C)
+                        {
+                            Console.Write($"{item} ");
+                        }
+                        Console.WriteLine();
                         break;
                     case "2":
                         string sourceDirectoryPath;
@@ -84,50 +84,73 @@ namespace MailSender.ConsoleTest
             Console.WriteLine("exit - close program.");
         }
 
-        //static async int[,] Multiply(int[,] First, int[,] Second)
-        //{
-        //    if (First.Rank != 2 || Second.Rank != 2)
-        //        throw new ArgumentException();
+        static async Task<int[,]> Multiply(int[,] First, int[,] Second)
+        {
+            if (First.Rank != 2 || Second.Rank != 2)
+                throw new ArgumentException();
 
-        //    int CntRowsA = First.GetLength(0);
-        //    int CntColomnsB = Second.GetLength(1);
+            int CntRowsA = First.GetLength(0);
+            int CntColomnsB = Second.GetLength(1);
 
-        //    if (First.GetLength(1) != Second.GetLength(0))
-        //    {
-        //        throw new ArgumentException("Rows count of first Matrix must equal colomn count of secon matrix");
-        //    }
+            if (First.GetLength(1) != Second.GetLength(0))
+            {
+                throw new ArgumentException("Rows count of first Matrix must equal colomn count of secon matrix");
+            }
 
-        //    var length = First.GetLength(1);
+            var length = First.GetLength(1);
 
-        //    var messages = Enumerable.Range(1, 100).Select(i => $"Message {i}").ToArray();
+            var messages = Enumerable.Range(1, 100).Select(i => $"Message {i}").ToArray();
 
-        //    var processing_tasks = new List<Task<int>>();
+            var processing_tasks = new List<Task<int>>();
 
-        //    for (int i = 0; i < CntRowsA; i++)
-        //        for (int j = 0; j < CntColomnsB; j++)
-        //        {
-
-        //            processing_tasks.Add(MultiplyRowColomn());
-        //        }
-
-
-        //    Console.WriteLine("Все задачи сформированы. Ждём их завершения");
-        //    //Task.WaitAll(processing_tasks.ToArray());
-        //    var awaiting_all_task = Task.WhenAll(processing_tasks);
-        //    await awaiting_all_task;
-
-        //    //awaiting_all_task.Result;
-
-        //    Console.WriteLine("Все задачи завершились.");
-
-        //    return First;
-        //}
-
-        //static async Task<int> MultiplyElements(int[,] A, int[,] B, int Row, int Colomn)
-        //{
+            for (int i = 0; i < CntRowsA; i++)
+                for (int j = 0; j < CntColomnsB; j++)
+                {
+                    processing_tasks.Add(MultiplyRowColomn(First, Second, i, j));
+                }
 
 
-        //}
+            Console.WriteLine("Все задачи сформированы. Ждём их завершения");
+            //Task.WaitAll(processing_tasks.ToArray());
+            var awaiting_all_task = Task.WhenAll(processing_tasks);
+            await awaiting_all_task;
+
+            int[,] result = new int[CntRowsA, CntColomnsB];
+
+            var results = awaiting_all_task.Result;
+
+
+            for (int i = 0; i < CntRowsA; i++)
+                for (int j = 0; j < CntColomnsB; j++)
+                {
+                    result[i, j] = results[i  * CntColomnsB + j];
+                }
+
+            //awaiting_all_task.Result;
+
+            Console.WriteLine("Все задачи завершились.");
+
+            return result;
+        }
+
+        static async Task<int> MultiplyRowColomn(int[,] A, int[,] B, int Row, int Colomn)
+        {
+            var processing_tasks = new List<Task<int>>();
+
+            for (int i = 0; i < A.GetLength(1); i++)
+            {
+                processing_tasks.Add(MultiplyElements(A[Row, i], B[i, Colomn]));
+            }
+
+            var awaiting_all_task = Task.WhenAll(processing_tasks);
+            await awaiting_all_task;
+            return awaiting_all_task.Result.Sum();
+        }
+
+        static async Task<int> MultiplyElements(int first, int second)
+        {
+            return first * second;
+        }
 
         static void DirStart(string DirectoryPath)
         {
@@ -149,9 +172,6 @@ namespace MailSender.ConsoleTest
                     DirEnd(outPath, exception.Message);
                 }
             }
-            
-
-
 
             //foreach (var file in Files)
             //{
