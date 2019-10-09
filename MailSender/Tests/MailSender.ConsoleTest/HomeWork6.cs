@@ -17,31 +17,15 @@ namespace MailSender.ConsoleTest
             while (IsWork)
             {
                 var command = Console.ReadLine();
-
-                int num, cntThreads;
                 bool Conditions = false;
-                string path;
+                int[,] first, second, third;
+                List<string> lines;
+
                 switch (command.ToLower())
                 {
                     case "1":
-                        int[,] A = new int[,]
-                        {
-                            { 2, 5 },
-                            { 7, 11 }
-                        };
-                        int[,] B = new int[,]
-                        {
-                            { 1, 2 },
-                            { 3, 4 }
-                        };
 
-                        var C = Multiply(A, B).GetAwaiter().GetResult();
-
-                        foreach (var item in C)
-                        {
-                            Console.Write($"{item} ");
-                        }
-                        Console.WriteLine();
+                        
                         break;
                     case "2":
                         string sourceDirectoryPath;
@@ -60,7 +44,39 @@ namespace MailSender.ConsoleTest
 
                         dirInfo = new DirectoryInfo(sourceDirectoryPath);
 
-                        DirStart(sourceDirectoryPath);
+                        var act = new ActionDirectoryFiles(sourceDirectoryPath);
+                        ThreadPool.QueueUserWorkItem(o => act.Start());
+                        break;
+                    case "3":
+                        first = new int[,]
+                        {
+                            { 2, 5 },
+                            { 7, 11 }
+                        };
+                        lines = Matrix2Lines(first);
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+                        second = new int[,]
+                        {
+                            { 1, 2 },
+                            { 3, 4 }
+                        };
+                        lines = Matrix2Lines(second);
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+
+                        third = Multiply(first, second).GetAwaiter().GetResult();
+                        lines = Matrix2Lines(third);
+
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+                        Console.WriteLine();
                         break;
                     case "help":
                         Help();
@@ -75,13 +91,47 @@ namespace MailSender.ConsoleTest
             }
         }
 
-        public static void Help()
+        private static void Help()
         {
             Console.WriteLine("To use this functions enter number and press \"Enter\" button on your keyboard.");
-            Console.WriteLine("1 - Matrix parallel async summary;");
+            //Console.WriteLine("1 - Matrix parallel async summary;");
             Console.WriteLine("2 - Dirrectories with files...");
+            Console.WriteLine("3 - Test matrix parallel async summary;");
             Console.WriteLine("help - this message;");
             Console.WriteLine("exit - close program.");
+        }
+        private static List<string> GetMatrix(int[,] matrix)
+        {
+            var lines = new List<string>();
+            StringBuilder strB = new StringBuilder();
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    strB.Append($"{matrix[i, j]}");
+                }
+                //strB.Append("\n");
+                lines.Add(strB.ToString());
+                strB.Clear();
+            }
+            return lines;
+        }
+
+        private static List<string> Matrix2Lines(int[,] matrix)
+        {
+            var lines = new List<string>();
+            StringBuilder strB = new StringBuilder();
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    strB.Append($"{matrix[i, j]}");
+                }
+                //strB.Append("\n");
+                lines.Add(strB.ToString());
+                strB.Clear();
+            }
+            return lines;
         }
 
         static async Task<int[,]> Multiply(int[,] First, int[,] Second)
@@ -152,69 +202,5 @@ namespace MailSender.ConsoleTest
             return first * second;
         }
 
-        static void DirStart(string DirectoryPath)
-        {
-            var dirInfo = new DirectoryInfo(DirectoryPath);
-            var Files = dirInfo.GetFiles();
-            var outPath = Path.Combine(DirectoryPath, "result.data");
-
-            var processing_tasks = new List<Task<int>>();
-
-
-            try
-            {
-                Parallel.ForEach(Files, (file) => DirAction(file.FullName, outPath));
-            }
-            catch (AggregateException ae)
-            {
-                foreach (var exception in ae.InnerExceptions)
-                {
-                    DirEnd(outPath, exception.Message);
-                }
-            }
-
-            //foreach (var file in Files)
-            //{
-            //    await DirAction(file.FullName, Path.Combine(DirectoryPath, outPath));
-            //}
-        }
-
-        private static void DirAction(string FilePath, string outPath)
-        {
-            double result = 0, first, second;
-
-            var lines = File.ReadAllLines(FilePath);
-
-            var data = lines.First().Trim().Split(' ');
-
-            double.TryParse(data[1], out first);
-            double.TryParse(data[2], out second);
-
-
-            switch (data[0])
-            {
-                case "1":
-                    result = first * second;
-                    break;
-                case "2":
-                    if (second == 0)
-                        throw new DivideByZeroException($"Error: In {FilePath} divide by zero error.");
-                    result = first / second;
-                    break;
-            }
-
-            DirEnd(outPath, $"File: {FilePath} Result: {result}");
-        }
-
-        private static readonly object __SyncRoot = new object();
-
-        static void DirEnd(string outPath, string msg)
-        {
-            lock (__SyncRoot)
-            {
-                File.AppendAllText(outPath, msg);
-                Console.WriteLine(msg);
-            }
-        }
     }
 }
