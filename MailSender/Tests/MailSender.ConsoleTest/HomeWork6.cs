@@ -17,31 +17,15 @@ namespace MailSender.ConsoleTest
             while (IsWork)
             {
                 var command = Console.ReadLine();
-
-                int num, cntThreads;
                 bool Conditions = false;
-                string path;
+                int[,] first, second, third;
+                List<string> lines;
+
                 switch (command.ToLower())
                 {
                     case "1":
-                        int[,] A = new int[,]
-                        {
-                            { 2, 5 },
-                            { 7, 11 }
-                        };
-                        int[,] B = new int[,]
-                        {
-                            { 1, 2 },
-                            { 3, 4 }
-                        };
 
-                        var C = Multiply(A, B).GetAwaiter().GetResult();
-
-                        foreach (var item in C)
-                        {
-                            Console.Write($"{item} ");
-                        }
-                        Console.WriteLine();
+                        
                         break;
                     case "2":
                         string sourceDirectoryPath;
@@ -63,6 +47,37 @@ namespace MailSender.ConsoleTest
                         var act = new ActionDirectoryFiles(sourceDirectoryPath);
                         ThreadPool.QueueUserWorkItem(o => act.Start());
                         break;
+                    case "3":
+                        first = new int[,]
+                        {
+                            { 2, 5 },
+                            { 7, 11 }
+                        };
+                        lines = Matrix2Lines(first);
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+                        second = new int[,]
+                        {
+                            { 1, 2 },
+                            { 3, 4 }
+                        };
+                        lines = Matrix2Lines(second);
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+
+                        third = Multiply(first, second).GetAwaiter().GetResult();
+                        lines = Matrix2Lines(third);
+
+                        foreach (var line in lines)
+                        {
+                            Console.WriteLine(line);
+                        }
+                        Console.WriteLine();
+                        break;
                     case "help":
                         Help();
                         break;
@@ -76,13 +91,47 @@ namespace MailSender.ConsoleTest
             }
         }
 
-        public static void Help()
+        private static void Help()
         {
             Console.WriteLine("To use this functions enter number and press \"Enter\" button on your keyboard.");
-            Console.WriteLine("1 - Matrix parallel async summary;");
+            //Console.WriteLine("1 - Matrix parallel async summary;");
             Console.WriteLine("2 - Dirrectories with files...");
+            Console.WriteLine("3 - Test matrix parallel async summary;");
             Console.WriteLine("help - this message;");
             Console.WriteLine("exit - close program.");
+        }
+        private static List<string> GetMatrix(int[,] matrix)
+        {
+            var lines = new List<string>();
+            StringBuilder strB = new StringBuilder();
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    strB.Append($"{matrix[i, j]}");
+                }
+                //strB.Append("\n");
+                lines.Add(strB.ToString());
+                strB.Clear();
+            }
+            return lines;
+        }
+
+        private static List<string> Matrix2Lines(int[,] matrix)
+        {
+            var lines = new List<string>();
+            StringBuilder strB = new StringBuilder();
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    strB.Append($"{matrix[i, j]}");
+                }
+                //strB.Append("\n");
+                lines.Add(strB.ToString());
+                strB.Clear();
+            }
+            return lines;
         }
 
         static async Task<int[,]> Multiply(int[,] First, int[,] Second)
