@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionDirectoryFiles.cs" />
     <Compile Include="ConsoleProgressBar.cs" />
     <Compile Include="ConverterCSVTXT.cs" />
     <Compile Include="HomeWork5.cs" />

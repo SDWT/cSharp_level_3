@@ -60,7 +60,8 @@ namespace MailSender.ConsoleTest
 
                         dirInfo = new DirectoryInfo(sourceDirectoryPath);
 
-                        DirStart(sourceDirectoryPath);
+                        var act = new ActionDirectoryFiles(sourceDirectoryPath);
+                        ThreadPool.QueueUserWorkItem(o => act.Start());
                         break;
                     case "help":
                         Help();
@@ -152,69 +153,5 @@ namespace MailSender.ConsoleTest
             return first * second;
         }
 
-        static void DirStart(string DirectoryPath)
-        {
-            var dirInfo = new DirectoryInfo(DirectoryPath);
-            var Files = dirInfo.GetFiles();
-            var outPath = Path.Combine(DirectoryPath, "result.data");
-
-            var processing_tasks = new List<Task<int>>();
-
-
-            try
-            {
-                Parallel.ForEach(Files, (file) => DirAction(file.FullName, outPath));
-            }
-            catch (AggregateException ae)
-            {
-                foreach (var exception in ae.InnerExceptions)
-                {
-                    DirEnd(outPath, exception.Message);
-                }
-            }
-
-            //foreach (var file in Files)
-            //{
-            //    await DirAction(file.FullName, Path.Combine(DirectoryPath, outPath));
-            //}
-        }
-
-        private static void DirAction(string FilePath, string outPath)
-        {
-            double result = 0, first, second;
-
-            var lines = File.ReadAllLines(FilePath);
-
-            var data = lines.First().Trim().Split(' ');
-
-            double.TryParse(data[1], out first);
-            double.TryParse(data[2], out second);
-
-
-            switch (data[0])
-            {
-                case "1":
-                    result = first * second;
-                    break;
-                case "2":
-                    if (second == 0)
-                        throw new DivideByZeroException($"Error: In {FilePath} divide by zero error.");
-                    result = first / second;
-                    break;
-            }
-
-            DirEnd(outPath, $"File: {FilePath} Result: {result}");
-        }
-
-        private static readonly object __SyncRoot = new object();
-
-        static void DirEnd(string outPath, string msg)
-        {
-            lock (__SyncRoot)
-            {
-                File.AppendAllText(outPath, msg);
-                Console.WriteLine(msg);
-            }
-        }
     }
 }
