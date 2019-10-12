@@ -1,12 +1,11 @@
 ﻿using MailSender.lib.Entities.Base;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace MailSender.lib.Entities
 {
     public class Server : NamedEntity
     {
+        [Required]
         public string Host { get; set; }
         public int Port { get; set; } = 25;
         public bool UseSSL { get; set; }
