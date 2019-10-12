@@ -22,6 +22,7 @@ using MailSender.lib.Services.DataProviders.InMemory;
 using MailSender.lib.Services.DataProviders.Linq2SQL;
 using MailSender.lib.Data.Linq2SQL;
 using System;
+using MailSender.lib.Data.EF;
 
 namespace MailSender.ViewModel
 {
@@ -43,6 +44,7 @@ namespace MailSender.ViewModel
 
             services
                 .TryRegister<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>()
+                .TryRegister(() => new MailSenderDB())
                 .TryRegister(() => new MailSenderDBDataContext());
 
             //services
