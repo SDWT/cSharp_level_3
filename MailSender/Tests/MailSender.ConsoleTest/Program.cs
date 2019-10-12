@@ -1,11 +1,13 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 //using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 using System.IO;
 
 using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace MailSender.ConsoleTest
 {
@@ -13,12 +15,13 @@ namespace MailSender.ConsoleTest
     {
         static void Main(string[] args)
         {
+            #region Lesson5
             //ThreadTest.Start();
             //SynchronizationTests.Start();
             //ThreadPoolTests.Start();
 
             //Console.ReadLine();
-            HomeWork5.Start();
+            //HomeWork5.Start();
 
 
             //var cCsvTxt = new ConverterCSVTXT();
@@ -44,8 +47,42 @@ namespace MailSender.ConsoleTest
             //fs.Write(arr2, 0, arr2.Length);
             //fs.Close();
             #endregion
-            //Console.ReadLine();
+
+
+            //new Thread(() => Console.WriteLine("Async parallel code")).Start();
+
+            //Action<string> printer = str => Console.WriteLine(str);
+            //printer("Hello World!");
+            //printer.Invoke("Hello World!2");
+
+            //// async in threadPool
+            //printer.BeginInvoke("Hello World!3", result => Console.WriteLine("... completed!"), null); 
+
+            #region History
+            ////history
+            //Func<string, int> string_transform = str =>
+            //{
+            //    Thread.Sleep(500);
+            //    return str.Length;
+            //};
+
+            //var data = "Hello World!";
+            //string_transform.BeginInvoke("Hello World!",
+            //    result => { var lenght = string_transform.EndInvoke(result);
+            //        Console.WriteLine("Lenght of {0} of {1}", (string)result.AsyncState, lenght);
+            //}, data);
+            #endregion
+
+            #endregion
+
+            //TPLTests.Start();
+            //TaskTests.Start();
+
+            HomeWork6.Start();
+
+            Console.ReadLine();
         }
+
 
     }
 }
