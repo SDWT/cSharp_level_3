@@ -16,10 +16,7 @@ namespace MailSender.ConsoleTest.HomeWork7.DBwork
             var persons = new List<Person>();
             using (var db = new HW7DBworkDB())
             {
-                foreach (var person in db.Persons)
-                {
-                    persons.Add(person);
-                }
+                persons = db.Persons.ToList();
             }
             return persons;
         }
@@ -29,7 +26,7 @@ namespace MailSender.ConsoleTest.HomeWork7.DBwork
             Person person = null;
             using (var db = new HW7DBworkDB())
             {
-                person = db.Persons.Where(p => p.Id == Id).First();
+                person = db.Persons.FirstOrDefault(p => p.Id == Id);
             }
             return person;
         }
@@ -37,7 +34,7 @@ namespace MailSender.ConsoleTest.HomeWork7.DBwork
         public Person Edit(int Id, Person newPerson)
         {
             Person person = null;
-            
+
             using (var db = new HW7DBworkDB())
             {
                 var prs = newPerson;
@@ -55,48 +52,59 @@ namespace MailSender.ConsoleTest.HomeWork7.DBwork
         List<Person> ImportFromCSV(string fileName)
         {
             var persons = new List<Person>();
-            var sr = new StreamReader(fileName);
-            StringBuilder strB = new StringBuilder();
 
-
-            int i = 0;
-            string str;
-            while (!((str = sr.ReadLine()) is null))
+            using (var sr = new StreamReader(fileName))
             {
-                var personStrings = str.Split(',');
-                var numTrim = personStrings[2].Trim();
-                strB.Append(numTrim.Split('+')[1].Split('(')[0]);
-                strB.Append(numTrim.Split('(')[1].Split(')')[0]);
-                var nums = numTrim.Split(')')[1].Trim().Split('-');
-                foreach (var part in nums)
-                    strB.Append(part);
+                StringBuilder strB = new StringBuilder();
+                string str;
 
-                string number = strB.ToString();
-
-                persons.Add(new Person
+                while (!((str = sr.ReadLine()) is null))
                 {
-                    Name = personStrings[0].Trim(),
-                    Email = personStrings[1].Trim(),
-                    PhoneNumber = number 
-                });
-                strB.Clear();
-            }
+                    var personStrings = str.Split(',');
+                    var numTrim = personStrings[2].Trim();
+                    strB.Append(numTrim.Split('+')[1].Split('(')[0]);
+                    strB.Append(numTrim.Split('(')[1].Split(')')[0]);
+                    var nums = numTrim.Split(')')[1].Trim().Split('-');
+                    foreach (var part in nums)
+                        strB.Append(part);
 
+                    string number = strB.ToString();
+
+                    persons.Add(new Person
+                    {
+                        Name = personStrings[0].Trim(),
+                        Email = personStrings[1].Trim(),
+                        PhoneNumber = number
+                    });
+                    strB.Clear();
+                }
+            }
             return persons;
         }
 
         public void ImportFromCSVToDataBase(string fileName)
         {
             var persons = ImportFromCSV(fileName);
+            var rnd = new Random();
+            int offset = rnd.Next(100, 500);
 
-            using (var db = new HW7DBworkDB())
+
+            for (int i = 0; i < persons.Count; i += offset)
             {
-                foreach (var person in persons)
+                using (var db = new HW7DBworkDB())
                 {
-                    db.Persons.Add(person);
+                    for (int j = i; j < offset + i; j++)
+                    {
+                        foreach (var person in persons)
+                        {
+                            db.Persons.Add(person);
+                        }
+                    }
                     db.SaveChanges();
                 }
             }
+
+            
         }
 
         public string Help()
