@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+using MailSender.ConsoleTest.HomeWork7;
 
 namespace MailSender.ConsoleTest
 {
@@ -78,7 +79,20 @@ namespace MailSender.ConsoleTest
             //TPLTests.Start();
             //TaskTests.Start();
 
-            HomeWork6.Start();
+            //HomeWork6.Start();
+
+            //StringBuilder strB = new StringBuilder();
+            //var numTrim = "+7(333) 123-45-67";
+            //strB.Append(numTrim.Split('+')[1].Split('(')[0]);
+            //strB.Append(numTrim.Split('(')[1].Split(')')[0]);
+            //var nums = numTrim.Split(')')[1].Trim().Split('-');
+            //foreach (var part in nums)
+            //    strB.Append(part);
+
+            //string number = strB.ToString();
+            //Console.WriteLine(number);
+
+            HomeWork7.HomeWork7.Start();
 
             Console.ReadLine();
         }
